@@ -1,0 +1,37 @@
+Testing VersionString:
+  found version '1.0b'.
+  found version '1.0a_rc1'.
+  found version '1.0a_beta1'.
+  found version '1.10.20040629'.
+  found version '1.0a_pre1'.
+  found version '1.10.20050629'.
+  found version '1.0a'.
+  found version '1.10'.
+  found version '1.0a_alpha1'.
+  found version '1.10.20050629-r1'.
+  found version '1.2'.
+  found version '1.0e'.
+  found version '1.0a_p1'.
+
+Testing sorted VersionString container:
+  1.0a_alpha1
+  1.0a_beta1
+  1.0a_pre1
+  1.0a_rc1
+  1.0a
+  1.0a_p1
+  1.0b
+  1.0e
+  1.2
+  1.10
+  1.10.20040629
+  1.10.20050629
+  1.10.20050629-r1
+
+Testing VersionComponents:
+  P = foo-1.10.20050629
+  PF = foo-1.10.20050629-r1
+  PN = foo
+  PR = r1
+  PV = 1.10.20050629
+  PVR = 1.10.20050629-r1

@@ -1,0 +1,6 @@
+- Full projectxml support.
+  (added 10/05/05, 01:45, incomplete, priority veryhigh)
+
+  - Figure out a way to fill in names of devs listed in <dev> tags
+    (added 10/05/05, 01:45, incomplete, priority medium)
+

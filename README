@@ -1,0 +1,42 @@
+libherdstat - http://developer.berlios.de/projects/libherdstat/
+See AUTHORS for developer contact information.
+
+libherdstat is a C++ library offering interfaces for portage-related things
+such as Gentoo-specific XML files, package searching, and version sorting.
+
+Features
+========
+    * Portage-related:
+	- Gentoo-specific XML files:
+	    - herds.xml
+	    - metadata.xml
+	    - userinfo.xml
+	    - devaway.xml
+	    - projectxml
+
+	- Categories (both tree and user-defined)
+	- Configuration (reads make.conf and make.globals)
+	- Developer/Herd containers
+	- Package searching (supports overlay searching as well).
+	- Proper version sorting
+	- Keyword sorting
+
+    * General-purpose:
+	- File fetcher
+	- POSIX regular expressions
+	- Pattern matching
+	- Directory iterators
+	- Progress bar
+	- Timer
+	- String manipulation
+	- Elementary variable substitution
+	- Algorithms and functional stuff.
+
+Bugs
+====
+Please submit bugs/patches via http://bugs.gentoo.org/.
+
+Usage
+=====
+If the --enable-doc configure option is used, API HTML documentation and
+manual pages will be installed.

@@ -1,0 +1,97 @@
+Testing util::Directory(app-misc/foo):
+ app-misc/foo/foo-1.0b.ebuild
+ app-misc/foo/files
+ app-misc/foo/foo-1.0a_rc1.ebuild
+ app-misc/foo/foo-1.0a_beta1.ebuild
+ app-misc/foo/foo-1.10.20040629.ebuild
+ app-misc/foo/foo-1.0a_pre1.ebuild
+ app-misc/foo/foo-1.10.20050629.ebuild
+ app-misc/foo/foo-1.0a.ebuild
+ app-misc/foo/foo-1.10.ebuild
+ app-misc/foo/foo-1.0a_alpha1.ebuild
+ app-misc/foo/foo-1.10.20050629-r1.ebuild
+ app-misc/foo/foo-1.2.ebuild
+ app-misc/foo/metadata.xml
+ app-misc/foo/foo-1.0e.ebuild
+ app-misc/foo/foo-1.0a_p1.ebuild
+
+Testing util::File for each file in the previous util::Directory:
+ File 'app-misc/foo/foo-1.0b.ebuild' is empty.
+ File 'app-misc/foo/foo-1.0a_rc1.ebuild' is empty.
+ File 'app-misc/foo/foo-1.0a_beta1.ebuild' is empty.
+ File 'app-misc/foo/foo-1.10.20040629.ebuild' is empty.
+ File 'app-misc/foo/foo-1.0a_pre1.ebuild' is empty.
+ File 'app-misc/foo/foo-1.10.20050629.ebuild' is empty.
+ File 'app-misc/foo/foo-1.0a.ebuild' is empty.
+ File 'app-misc/foo/foo-1.10.ebuild' is empty.
+ File 'app-misc/foo/foo-1.0a_alpha1.ebuild' is empty.
+ File contents for 'app-misc/foo/foo-1.10.20050629-r1.ebuild'.
+    HOMEPAGE="http://www.${PN}.org"
+    FOO="lala"
+    LALA="${FOO} ${LALA} ${LALA} ${NON_EXISTENT}"
+    LALA="${LALA}"
+    LALA="$(echo ${LALA} | sed -n -e 's/foo/bar/')-$(echo ${LALA} | sort -u)"
+ File 'app-misc/foo/foo-1.2.ebuild' is empty.
+ File contents for 'app-misc/foo/metadata.xml'.
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+    <pkgmetadata>
+    	<herd>foo</herd>
+    	<maintainer>
+    		<email>ka0ttic@gentoo.org</email>
+    		<name>Aaron Walker</name>
+    	</maintainer>
+    	<longdescription>
+    	</longdescription>
+    </pkgmetadata>
+ File 'app-misc/foo/foo-1.0e.ebuild' is empty.
+ File 'app-misc/foo/foo-1.0a_p1.ebuild' is empty.
+
+Testing util::Directory copy constructor (and re-running tests on it):
+ app-misc/foo/foo-1.0b.ebuild
+ app-misc/foo/files
+ app-misc/foo/foo-1.0a_rc1.ebuild
+ app-misc/foo/foo-1.0a_beta1.ebuild
+ app-misc/foo/foo-1.10.20040629.ebuild
+ app-misc/foo/foo-1.0a_pre1.ebuild
+ app-misc/foo/foo-1.10.20050629.ebuild
+ app-misc/foo/foo-1.0a.ebuild
+ app-misc/foo/foo-1.10.ebuild
+ app-misc/foo/foo-1.0a_alpha1.ebuild
+ app-misc/foo/foo-1.10.20050629-r1.ebuild
+ app-misc/foo/foo-1.2.ebuild
+ app-misc/foo/metadata.xml
+ app-misc/foo/foo-1.0e.ebuild
+ app-misc/foo/foo-1.0a_p1.ebuild
+
+Testing util::File for each file in the previous util::Directory:
+ File 'app-misc/foo/foo-1.0b.ebuild' is empty.
+ File 'app-misc/foo/foo-1.0a_rc1.ebuild' is empty.
+ File 'app-misc/foo/foo-1.0a_beta1.ebuild' is empty.
+ File 'app-misc/foo/foo-1.10.20040629.ebuild' is empty.
+ File 'app-misc/foo/foo-1.0a_pre1.ebuild' is empty.
+ File 'app-misc/foo/foo-1.10.20050629.ebuild' is empty.
+ File 'app-misc/foo/foo-1.0a.ebuild' is empty.
+ File 'app-misc/foo/foo-1.10.ebuild' is empty.
+ File 'app-misc/foo/foo-1.0a_alpha1.ebuild' is empty.
+ File contents for 'app-misc/foo/foo-1.10.20050629-r1.ebuild'.
+    HOMEPAGE="http://www.${PN}.org"
+    FOO="lala"
+    LALA="${FOO} ${LALA} ${LALA} ${NON_EXISTENT}"
+    LALA="${LALA}"
+    LALA="$(echo ${LALA} | sed -n -e 's/foo/bar/')-$(echo ${LALA} | sort -u)"
+ File 'app-misc/foo/foo-1.2.ebuild' is empty.
+ File contents for 'app-misc/foo/metadata.xml'.
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+    <pkgmetadata>
+    	<herd>foo</herd>
+    	<maintainer>
+    		<email>ka0ttic@gentoo.org</email>
+    		<name>Aaron Walker</name>
+    	</maintainer>
+    	<longdescription>
+    	</longdescription>
+    </pkgmetadata>
+ File 'app-misc/foo/foo-1.0e.ebuild' is empty.
+ File 'app-misc/foo/foo-1.0a_p1.ebuild' is empty.

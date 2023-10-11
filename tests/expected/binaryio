@@ -1,0 +1,13 @@
+Testing BinaryOStream... 
+wrote '10'.
+wrote 'This is a test.'.
+wrote 'foo'.
+
+Testing BinaryIStream on the binary stream we just wrote...
+read value '10'.
+read value 'This is a test.'.
+read value 'foo'.
+Testing BinaryOStreamIterator...
+s = 'foo bar baz '.
+Testing BinaryIStreamIterator...
+s2 = 'foo bar baz '.

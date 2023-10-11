@@ -1,0 +1,125 @@
+Testing portage::PackageDirectory(app-misc/foo):
+ app-misc/foo/foo-1.0b.ebuild
+ app-misc/foo/files
+ app-misc/foo/files/foo.patch
+ app-misc/foo/files/bar.diff
+ app-misc/foo/foo-1.0a_rc1.ebuild
+ app-misc/foo/foo-1.0a_beta1.ebuild
+ app-misc/foo/foo-1.10.20040629.ebuild
+ app-misc/foo/foo-1.0a_pre1.ebuild
+ app-misc/foo/foo-1.10.20050629.ebuild
+ app-misc/foo/foo-1.0a.ebuild
+ app-misc/foo/foo-1.10.ebuild
+ app-misc/foo/foo-1.0a_alpha1.ebuild
+ app-misc/foo/foo-1.10.20050629-r1.ebuild
+ app-misc/foo/foo-1.2.ebuild
+ app-misc/foo/metadata.xml
+ app-misc/foo/foo-1.0e.ebuild
+ app-misc/foo/foo-1.0a_p1.ebuild
+
+Testing portage::PackageDirectory::ebuild_count():
+ Number of ebuilds present in app-misc/foo: 13
+
+Testing portage::PackageDirectory::patches_count():
+ Number of patches present in app-misc/foo: 2
+
+Testing portage::PackageDirectory::has_metadata():
+ Package directory app-misc/foo has a metadata.xml? true
+Removing metadata.xml from directory vector and re-testing has_metadata().
+ Package directory app-misc/foo has a metadata.xml? false
+
+Testing portage::PackageDirectory::ebuilds():
+Showing ebuild variables for 'app-misc/foo/foo-1.0b.ebuild'.
+  Variable 'P' has a value of 'foo-1.0b'.
+  Variable 'PF' has a value of 'foo-1.0b-r0'.
+  Variable 'PN' has a value of 'foo'.
+  Variable 'PR' has a value of 'r0'.
+  Variable 'PV' has a value of '1.0b'.
+  Variable 'PVR' has a value of '1.0b-r0'.
+Showing ebuild variables for 'app-misc/foo/foo-1.0a_rc1.ebuild'.
+  Variable 'P' has a value of 'foo-1.0a_rc1'.
+  Variable 'PF' has a value of 'foo-1.0a_rc1-r0'.
+  Variable 'PN' has a value of 'foo'.
+  Variable 'PR' has a value of 'r0'.
+  Variable 'PV' has a value of '1.0a_rc1'.
+  Variable 'PVR' has a value of '1.0a_rc1-r0'.
+Showing ebuild variables for 'app-misc/foo/foo-1.0a_beta1.ebuild'.
+  Variable 'P' has a value of 'foo-1.0a_beta1'.
+  Variable 'PF' has a value of 'foo-1.0a_beta1-r0'.
+  Variable 'PN' has a value of 'foo'.
+  Variable 'PR' has a value of 'r0'.
+  Variable 'PV' has a value of '1.0a_beta1'.
+  Variable 'PVR' has a value of '1.0a_beta1-r0'.
+Showing ebuild variables for 'app-misc/foo/foo-1.10.20040629.ebuild'.
+  Variable 'P' has a value of 'foo-1.10.20040629'.
+  Variable 'PF' has a value of 'foo-1.10.20040629-r0'.
+  Variable 'PN' has a value of 'foo'.
+  Variable 'PR' has a value of 'r0'.
+  Variable 'PV' has a value of '1.10.20040629'.
+  Variable 'PVR' has a value of '1.10.20040629-r0'.
+Showing ebuild variables for 'app-misc/foo/foo-1.0a_pre1.ebuild'.
+  Variable 'P' has a value of 'foo-1.0a_pre1'.
+  Variable 'PF' has a value of 'foo-1.0a_pre1-r0'.
+  Variable 'PN' has a value of 'foo'.
+  Variable 'PR' has a value of 'r0'.
+  Variable 'PV' has a value of '1.0a_pre1'.
+  Variable 'PVR' has a value of '1.0a_pre1-r0'.
+Showing ebuild variables for 'app-misc/foo/foo-1.10.20050629.ebuild'.
+  Variable 'P' has a value of 'foo-1.10.20050629'.
+  Variable 'PF' has a value of 'foo-1.10.20050629-r0'.
+  Variable 'PN' has a value of 'foo'.
+  Variable 'PR' has a value of 'r0'.
+  Variable 'PV' has a value of '1.10.20050629'.
+  Variable 'PVR' has a value of '1.10.20050629-r0'.
+Showing ebuild variables for 'app-misc/foo/foo-1.0a.ebuild'.
+  Variable 'P' has a value of 'foo-1.0a'.
+  Variable 'PF' has a value of 'foo-1.0a-r0'.
+  Variable 'PN' has a value of 'foo'.
+  Variable 'PR' has a value of 'r0'.
+  Variable 'PV' has a value of '1.0a'.
+  Variable 'PVR' has a value of '1.0a-r0'.
+Showing ebuild variables for 'app-misc/foo/foo-1.10.ebuild'.
+  Variable 'P' has a value of 'foo-1.10'.
+  Variable 'PF' has a value of 'foo-1.10-r0'.
+  Variable 'PN' has a value of 'foo'.
+  Variable 'PR' has a value of 'r0'.
+  Variable 'PV' has a value of '1.10'.
+  Variable 'PVR' has a value of '1.10-r0'.
+Showing ebuild variables for 'app-misc/foo/foo-1.0a_alpha1.ebuild'.
+  Variable 'P' has a value of 'foo-1.0a_alpha1'.
+  Variable 'PF' has a value of 'foo-1.0a_alpha1-r0'.
+  Variable 'PN' has a value of 'foo'.
+  Variable 'PR' has a value of 'r0'.
+  Variable 'PV' has a value of '1.0a_alpha1'.
+  Variable 'PVR' has a value of '1.0a_alpha1-r0'.
+Showing ebuild variables for 'app-misc/foo/foo-1.10.20050629-r1.ebuild'.
+  Variable 'FOO' has a value of 'lala'.
+  Variable 'HOMEPAGE' has a value of 'http://www.foo.org'.
+  Variable 'LALA' has a value of '$(echo ${LALA} | sed -n -e 's/foo/bar/')-$(echo ${LALA} | sort -u)'.
+  Variable 'P' has a value of 'foo-1.10.20050629'.
+  Variable 'PF' has a value of 'foo-1.10.20050629-r1'.
+  Variable 'PN' has a value of 'foo'.
+  Variable 'PR' has a value of 'r1'.
+  Variable 'PV' has a value of '1.10.20050629'.
+  Variable 'PVR' has a value of '1.10.20050629-r1'.
+Showing ebuild variables for 'app-misc/foo/foo-1.2.ebuild'.
+  Variable 'P' has a value of 'foo-1.2'.
+  Variable 'PF' has a value of 'foo-1.2-r0'.
+  Variable 'PN' has a value of 'foo'.
+  Variable 'PR' has a value of 'r0'.
+  Variable 'PV' has a value of '1.2'.
+  Variable 'PVR' has a value of '1.2-r0'.
+Showing ebuild variables for 'app-misc/foo/foo-1.0e.ebuild'.
+  Variable 'P' has a value of 'foo-1.0e'.
+  Variable 'PF' has a value of 'foo-1.0e-r0'.
+  Variable 'PN' has a value of 'foo'.
+  Variable 'PR' has a value of 'r0'.
+  Variable 'PV' has a value of '1.0e'.
+  Variable 'PVR' has a value of '1.0e-r0'.
+Showing ebuild variables for 'app-misc/foo/foo-1.0a_p1.ebuild'.
+  Variable 'P' has a value of 'foo-1.0a_p1'.
+  Variable 'PF' has a value of 'foo-1.0a_p1-r0'.
+  Variable 'PN' has a value of 'foo'.
+  Variable 'PR' has a value of 'r0'.
+  Variable 'PV' has a value of '1.0a_p1'.
+  Variable 'PVR' has a value of '1.0a_p1-r0'.

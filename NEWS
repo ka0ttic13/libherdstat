@@ -1,0 +1,92 @@
+This file contains a summary of changes in released versions.  Please read the
+ChangeLog file for a more detailed listing of changes/bug fixes.
+
+0.2.0:
+
+    API Changes:
+    - xml::GlobalInit() access function now returns a const reference.
+    - Added a Package class for representing a portage "package".
+    - portage::PackageList is now a vector of portage::Package's.
+    - Portage package searching interface has been completely rewritten.  The
+      implementation is *much* cleaner and the interface can actually be
+      considered usable (unlike before).  The find_package family of functions
+      has been replaced by the PackageFinder class.  The ebuild_which family
+      of functions has been replaced by the PackageWhich class.  PackageFinder
+      is defined in package_finder.hh; PackageWhich in package_which.hh.
+    - Added util::all_equal() algorithms.
+    - Renamed quite a few classes to be consistent with the other classes.
+      version_map => VersionComponents, versions => Versions, version_string =>
+      VersionString, config => Config, parsable => Parsable, fetchable => Fetchable,
+      noncopyable => Noncopyable, herds_xml => HerdsXML, userinfo_xml => UserinfoXML,
+      devaway_xml => DevawayXML, project_xml => ProjectXML, metadata_xml =>
+      MetadataXML, metadata => Metadata, ebuild => Ebuild.
+    - Added class template VersionsMap for mapping VersionString's to objects
+      of type T.
+    - Added KeywordsMap class that maps VersionString objects to Keywords
+      objects.
+    - Added compositional function object adapters compose_f_gx,
+      compose_f_gx_hx, and compose_f_gx_hy as described/implemented in
+      Josuttis' "The Standard C++ Library - A Tutorial and Reference".  Many
+      previously offered function objects have now been removed since they
+      can be easily accomplished using other function objects and these new
+      compositional adapters (eg instead of using util::FirstEqual we can now
+      use compose_f_gx with std::equal_to and util::First).
+    - Fetcher revamping.  Fetcher implementation is now choosable at run-time.
+      Added FetcherImpMap which maps implementation names to FetcherImp
+      pointers.  The Fetcher class allows passing a FetcherImpMap instance upon
+      construction, so now, not only can the user choose which implementation to
+      use, s(he) can also add their own concrete FetcherImp derivatives.
+    - util::Progress is no longer.  Instead we have an abstract interface,
+      util::ProgressMeter and several concrete derivatives: PercentMeter (the
+      previous implementation), EllipseMeter (shows an animated ellipse),
+      DotsMeter (simply shows a '.' for each progress increment), and Spinner
+      (like the portage spinner).
+    - herdstat/portage/misc.hh renamed to herdstat/portage/util.hh.
+
+    Implementation Changes:
+    - The following class members are now implemented as pointers and
+      instantiatied on-demand (so if it's never used, it's never instantiated):
+      Developer::_herds, metadata::_herds, metadata::_devs, config::_archs,
+      config::_categories.
+
+    Miscellaneous Changes:
+    - Test framework completely rewritten.  Instead of one executable per test,
+      there's now one executable and one main.  All the tests are now implemented
+      as classes.  Calling the test's operator() executes the test.
+
+0.1.1:
+    - Added util::EmptyFirst function object for instantiating a
+      std::pair<std::string, T> with the 'first' member as an empty
+      string.
+    - xml::Init now has a private constructor and a friend function
+      GlobalInit() so that access can be controlled and we're guaranteed
+      to only have one instance.
+
+0.1.0_p2:
+    - Added a few more tests.
+    - Fixed missing version in pkgconfig file.
+
+0.1.0_p1:
+    - Removed util::getcols() and thus the ncurses checks, linking, etc.
+    - Rewrote portage::config class.  It can no longer be used directly
+      (private constructor) and instead can only be access via
+      portage::GlobalConfig(), which returns a const reference to a local
+      static instance.
+    - util::BaseFileObject now defines read() and close(), calling pure
+      virtuals, do_read() and do_close() respectively.
+
+    New features:
+	- Added an interface to architecture keywords.  Provides a Keyword
+	  class that represents a single architecture keyword.  Also provides
+	  a Keyword container, Keywords, that besides holding keywords, is
+	  able to produce a sorted, colored (if desired) keywords string.
+	- Added a few more function objects: portage::IsCategory,
+	  util::First{Less,Greater}, util::Second{Less,Greater}.
+
+0.1.0_beta1:
+    Broke out libherdstat from herdstat proper into its own package.
+
+    Bug fixes:
+     - Fixed uncaught exception thrown when a projectxml file doesnt exist when
+       parsing herds.xml that caused parsing to cease before finished.  Thanks
+       to Diego (Flameeyes) for catching this one.

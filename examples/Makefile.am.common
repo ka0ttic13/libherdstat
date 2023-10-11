@@ -1,0 +1,6 @@
+# $Id$
+
+include $(top_builddir)/Makefile.am.common
+LIBS = $(top_builddir)/herdstat/libherdstat.la
+
+# vim: set ft=automake :

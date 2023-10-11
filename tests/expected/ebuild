@@ -1,0 +1,12 @@
+  Variable 'DESCRIPTION' has a value of 'libfoo for writing foomatic apps'.
+  Variable 'HOMEPAGE' has a value of 'http://www.gentoo.org/proj/en/libfoo'.
+  Variable 'KEYWORDS' has a value of '-* ~alpha amd64 -x86-fbsd x86 ~sparc'.
+  Variable 'LICENSE' has a value of '|| ( GPL-2 BSD )'.
+  Variable 'MY_P' has a value of '${MY_P}'.
+  Variable 'P' has a value of 'libfoo-1.9'.
+  Variable 'PF' has a value of 'libfoo-1.9-r0'.
+  Variable 'PN' has a value of 'libfoo'.
+  Variable 'PR' has a value of 'r0'.
+  Variable 'PV' has a value of '1.9'.
+  Variable 'PVR' has a value of '1.9-r0'.
+  Variable 'SRC_URI' has a value of 'mirror://gentoo/libfoo-1.9.tar.gz'.

@@ -1,0 +1,8 @@
+<todo version="0.1.19">
+    <note priority="veryhigh" time="1128491119">
+        Full projectxml support.
+        <note priority="medium" time="1128491131">
+            Figure out a way to fill in names of devs listed in &lt;dev&gt; tags
+        </note>
+    </note>
+</todo>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="172"
+   name=""
+   committed-date="2005-12-04T13:35:53.195588Z"
+   url="svn+ssh://svn.berlios.de/svnroot/repos/libherdstat/trunk/tests/expected"
+   last-author="ka0ttic"
+   kind="dir"
+   uuid="830c426f-6502-0410-a408-9daea7eb3ada"
+   revision="223"/>
+<entry
+   committed-rev="1"
+   name="metadata.xml"
+   text-time="2005-10-14T12:22:53.000000Z"
+   committed-date="2005-10-06T14:00:43.302459Z"
+   checksum="230803580b9549529e4435f2e590578f"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-10-11T13:49:31.000000Z"/>
+<entry
+   committed-rev="142"
+   name="package_directory"
+   text-time="2005-11-25T13:57:09.000000Z"
+   committed-date="2005-11-23T02:14:51.016982Z"
+   checksum="330d411d43d8304f2c795b04f0c1918f"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-11-25T13:57:09.000000Z"/>
+<entry
+   committed-rev="165"
+   name="file"
+   text-time="2005-12-08T22:21:03.000000Z"
+   committed-date="2005-12-02T12:38:31.629379Z"
+   checksum="8f6ed8fec2762c470123609ae00fd287"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-12-08T22:21:03.000000Z"/>
+<entry
+   committed-rev="69"
+   name="license"
+   text-time="2005-10-19T12:46:03.000000Z"
+   committed-date="2005-10-15T11:51:15.598729Z"
+   checksum="e627776418c16b52fada8399885855e5"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-10-19T12:46:03.000000Z"/>
+<entry
+   committed-rev="122"
+   name="algo"
+   text-time="2005-11-19T12:52:10.000000Z"
+   committed-date="2005-11-13T13:32:02.906287Z"
+   checksum="21c3bc0138e2f585ad5694e0f3078e27"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-11-19T12:52:10.000000Z"/>
+<entry
+   committed-rev="135"
+   name="package_finder"
+   text-time="2005-11-19T12:52:10.000000Z"
+   committed-date="2005-11-19T12:51:13.878162Z"
+   checksum="4979254c3c763d3ade6f16de00818109"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-11-19T12:52:10.000000Z"/>
+<entry
+   committed-rev="1"
+   name="glob"
+   text-time="2005-10-14T12:22:53.000000Z"
+   committed-date="2005-10-06T14:00:43.302459Z"
+   checksum="c9014ad7cd342c7feebf6e32b19fa63d"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-10-11T13:49:31.000000Z"/>
+<entry
+   committed-rev="123"
+   name="keyword"
+   text-time="2005-11-19T12:52:10.000000Z"
+   committed-date="2005-11-16T13:00:55.344282Z"
+   checksum="c8155b8ab160802a6151e747cc43831e"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-11-19T12:52:10.000000Z"/>
+<entry
+   committed-rev="123"
+   name="version"
+   text-time="2005-11-19T12:52:10.000000Z"
+   committed-date="2005-11-16T13:00:55.344282Z"
+   checksum="cb21eeaf98ecf77559e4c0bfd4550f31"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-11-19T12:52:10.000000Z"/>
+<entry
+   committed-rev="89"
+   name="package_list"
+   text-time="2005-10-23T15:56:24.000000Z"
+   committed-date="2005-10-23T15:53:21.794204Z"
+   checksum="9a496e4a2cbd1b218033ba2e1f6bc0c1"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-10-23T15:56:24.000000Z"/>
+<entry
+   committed-rev="141"
+   name="email"
+   text-time="2005-11-25T13:57:09.000000Z"
+   committed-date="2005-11-21T14:19:35.483023Z"
+   checksum="af3c45752e50c40d09c42c892b445863"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-11-25T13:57:09.000000Z"/>
+<entry
+   committed-rev="89"
+   name="userinfo.xml"
+   text-time="2005-10-23T15:56:24.000000Z"
+   committed-date="2005-10-23T15:53:21.794204Z"
+   checksum="39c30afe3a7b69f98f4bf498fb350b96"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-10-23T15:56:24.000000Z"/>
+<entry
+   committed-rev="139"
+   name="devaway.xml"
+   text-time="2005-11-20T12:44:19.000000Z"
+   committed-date="2005-11-20T12:34:30.558890Z"
+   checksum="d8ca023a7594f2a0b1821ec1e04eae41"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-11-20T12:44:19.000000Z"/>
+<entry
+   committed-rev="142"
+   name="ebuild"
+   text-time="2005-11-25T13:57:09.000000Z"
+   committed-date="2005-11-23T02:14:51.016982Z"
+   checksum="7f1f90f9dd728d975c6a1aa3ec395560"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-11-25T13:57:09.000000Z"/>
+<entry
+   committed-rev="1"
+   name="herds.xml"
+   text-time="2005-10-14T12:22:53.000000Z"
+   committed-date="2005-10-06T14:00:43.302459Z"
+   checksum="74455d0133c897491cf077430ea408b8"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-10-11T13:49:31.000000Z"/>
+<entry
+   committed-rev="165"
+   name="string"
+   text-time="2005-12-08T22:21:03.000000Z"
+   committed-date="2005-12-02T12:38:31.629379Z"
+   checksum="1bc0a4c9f645b995f7349280a0be656a"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-12-08T22:21:03.000000Z"/>
+<entry
+   committed-rev="55"
+   name="regex"
+   text-time="2005-10-14T12:22:53.000000Z"
+   committed-date="2005-10-12T12:58:57.904077Z"
+   checksum="a35733932c51f68ae711069b43af31c1"
+   last-author="ka0ttic"
+   kind="file"/>
+<entry
+   committed-rev="142"
+   name="vars"
+   text-time="2005-11-25T13:57:09.000000Z"
+   committed-date="2005-11-23T02:14:51.016982Z"
+   checksum="0e0c5801693c9272bddbd7dee16fe18c"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-11-25T13:57:09.000000Z"/>
+<entry
+   committed-rev="89"
+   name="container_base"
+   text-time="2005-10-23T15:56:24.000000Z"
+   committed-date="2005-10-23T15:53:21.794204Z"
+   checksum="9bf3daf69a2506df4b7826c2afd0014f"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-10-23T15:56:24.000000Z"/>
+<entry
+   committed-rev="172"
+   name="binaryio"
+   text-time="2005-12-08T22:21:03.000000Z"
+   committed-date="2005-12-04T13:35:53.195588Z"
+   checksum="65c2c30a5ce0779fafe85293a7507ffe"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-12-08T22:21:03.000000Z"/>
+<entry
+   committed-rev="135"
+   name="package_which"
+   text-time="2005-11-19T12:52:10.000000Z"
+   committed-date="2005-11-19T12:51:13.878162Z"
+   checksum="a47c832cb49ea32044a38a1052f274bf"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-11-19T12:52:10.000000Z"/>
+</wc-entries>

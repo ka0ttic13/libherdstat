@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+version_major=@VERSION_MAJOR@
+version_minor=@VERSION_MINOR@
+
+Name: libherdstat
+Description: C++ interface to portage
+Requires:
+Version: @VERSION@
+Libs: -L${libdir} -lherdstat
+Cflags: -I${includedir}/libherdstat-${version_major}.${version_minor}

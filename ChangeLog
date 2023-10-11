@@ -1,0 +1,1414 @@
+2006-01-12  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r223] doc/Doxyfile.in, doc/Makefile.am,
+	  herdstat/util/container_base.hh: Minor changes.
+
+2006-01-04  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r222] NEWS, configure.ac, herdstat/Makefile.am,
+	  herdstat/doxygen.hh, herdstat/readline: Broke readline stuff out
+	  into it's own lib, libreadline++, also hosted at berlios.
+
+2005-12-29  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r221] NEWS, configure.ac, herdstat/Makefile.am,
+	  herdstat/doxygen.hh, herdstat/readline,
+	  herdstat/readline/Makefile.am, herdstat/readline/history.cc,
+	  herdstat/readline/history.hh, herdstat/readline/readline.cc,
+	  herdstat/readline/readline.hh, herdstat/util/Makefile.am,
+	  herdstat/util/readline.cc, herdstat/util/readline.hh: Moved
+	  ReadLine class into a new readline namespace; also added the
+	  History class, an interface to libhistory.
+
+2005-12-26  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r220] herdstat/portage/devaway_xml.cc,
+	  herdstat/portage/herds_xml.cc, herdstat/portage/metadata_xml.cc,
+	  herdstat/portage/project_xml.cc,
+	  herdstat/portage/userinfo_xml.cc: Increment the progress meter
+	  in all the sax2 callbacks
+	* [r219] herdstat/util/string.cc, herdstat/util/string.hh: Added a
+	  strdup fallback.
+	* [r218] herdstat/defs.hh: Added NELEMS define for determining the
+	  number of elements in a C array.
+	* [r217] NEWS, configure.ac, herdstat/util/Makefile.am,
+	  herdstat/util/readline.cc, herdstat/util/readline.hh: Added the
+	  util::ReadLine class, an interface to the readline lib's
+	  readline() and add_history() functions.
+
+2005-12-25  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r216] herdstat/portage/metadata_xml.cc: Don't insert herds into
+	  Developer containers (eg when someone puts sound@gentoo.org in
+	  <maintainer> for a pkg with <herd>sound</herd>).
+	* [r215] herdstat/portage/package_list.hh: Add portdir() and
+	  overlays() members so clients can find out what they were
+	  initialized to.
+	* [r214] herdstat/portage/package_finder.cc,
+	  herdstat/portage/package_finder.hh: Rename the operator()
+	  template member to find() and instead offer some overloaded
+	  operator()'s so we can do a nice optimization hack for literal
+	  searches. The real work is then passed to find() if needed.
+	* [r213] herdstat/portage/categories.cc: Don't remove 'virtual'
+	  from the set when filling Categories' internal container since
+	  virtual is now a real category.
+
+2005-12-22  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r212] herdstat/util/progress/spinner.cc,
+	  herdstat/util/progress/spinner.hh: Rename _cur member to _seqp
+	  just so it doesn't get confused with ProgressMeter::_cur.
+	* [r211] herdstat/util/glob.cc, herdstat/util/glob.hh: No need to
+	  define a class global glob_t instance since it is only used in
+	  operator(). Also use vector<string>::insert rather than
+	  std::copy when copying the results from the glob_t to the vector.
+	* [r210] herdstat/util/progress/meter.cc: Reset all members to 0
+	  when stop() is called.
+	* [r209] herdstat/util/functional.hh: Added IncrementProgress
+	  functor.
+	* [r208] herdstat/portage/atom.cc, herdstat/portage/atom.hh,
+	  herdstat/portage/exceptions.cc, herdstat/portage/exceptions.hh:
+	  Added initial beginnings of the portage::Atom class; not yet in
+	  a state to be included in Makefile.am.
+	* [r207] herdstat/portage/package.hh,
+	  herdstat/portage/package_list.hh: Moved PKGLIST_RESERVE #define
+	  from package.hh to package_list.hh where it belongs.
+	* [r206] herdstat/portage/package.cc: Have the _dir member
+	  initialized to GlobalConfig().portdir(). for constructors that
+	  don't initialize it with something else.
+	* [r205] herdstat/Makefile.am, herdstat/portage/data_source.hh,
+	  herdstat/portage/herds_xml.cc, herdstat/portage/metadata_xml.cc,
+	  herdstat/portage/metadata_xml.hh,
+	  herdstat/portage/project_xml.cc,
+	  herdstat/portage/project_xml.hh, herdstat/progressable.hh,
+	  herdstat/util/file.cc, herdstat/util/file.hh: Added Progressable
+	  base class for things that can be monitored with a
+	  util::ProgressMeter; updated some classes to inherit it. for
+	  example, util::Directory will now use a progress meter if you
+	  call it's set_meter() member function passing a non-NULL pointer
+	  to a ProgressMeter instance.
+	* [r204] NEWS, examples/versions/main.cc,
+	  herdstat/portage/Makefile.am, herdstat/portage/ebuild.cc,
+	  herdstat/portage/functional.hh, herdstat/portage/keywords.cc,
+	  herdstat/portage/misc.hh, herdstat/portage/package_finder.hh,
+	  herdstat/portage/package_which.cc, herdstat/portage/util.cc,
+	  herdstat/portage/util.hh, herdstat/portage/version.cc,
+	  tests/src/version-test.hh: Renamed portage/misc.hh to
+	  portage/util.hh; updated portage::is_category() to accept a path
+	  instead of just the name.
+
+2005-12-18  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r203] .todo, configure.ac, herdstat/util/Makefile.am,
+	  herdstat/util/getcols.cc, herdstat/util/getcols.hh,
+	  herdstat/util/progress/bar.cc, herdstat/util/progress/bar.hh:
+	  Moved getcols code from herdstat to libherdstat.
+	* [r202] herdstat/portage/package_which.cc,
+	  herdstat/portage/package_which.hh: Updated to use
+	  util::ProgressMeter if specified for incrementing the meter.
+
+2005-12-14  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r201] .todo, NEWS, examples/progress/main.cc: trivial changes
+	* [r200] herdstat/portage/package_list.cc: Use the swap trick to
+	  trim unused space after filling the container.
+	* [r199] herdstat/util/progress/dots.hh,
+	  herdstat/util/progress/ellipse.hh,
+	  herdstat/util/progress/meter.hh,
+	  herdstat/util/progress/percent.hh,
+	  herdstat/util/progress/spinner.hh: Update doxygen comments.
+
+2005-12-13  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r198] herdstat/util/progress/Makefile.am,
+	  herdstat/util/progress/dots.cc,
+	  herdstat/util/progress/ellipse.cc,
+	  herdstat/util/progress/ellipse.hh,
+	  herdstat/util/progress/meter.cc,
+	  herdstat/util/progress/meter.hh,
+	  herdstat/util/progress/percent.cc,
+	  herdstat/util/progress/percent.hh,
+	  herdstat/util/progress/spinner.cc,
+	  herdstat/util/progress/spinner.hh: Added ProgressMeter::stop()
+	  and do_stop() virtual which now does what
+	  ProgressMeter::~ProgressMeter() used to do. Each ProgressMeter
+	  derivative now calls stop() in its destructor.
+	* [r197] herdstat/portage/version.cc: Fixed bug in
+	  VersionComponents::parse() that caused the first character of a
+	  version string to be truncated if ${PN} contained a '-'.
+	* [r196] herdstat/portage/package_finder.hh: Add optional
+	  ProgressMeter argument to PackageFinder::operator() which if
+	  specified, increments the progress for each iteration.
+	* [r195] Makefile.am, Makefile.am.common, configure.ac, m4,
+	  m4/check_cxxflag.m4: Added LHS_CHECK_CXXFLAG m4 macro based on
+	  libebt's LIBEBT_CHECK_CXXFLAG.
+
+2005-12-12  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r194] herdstat/fetcher/curlfetcher.cc,
+	  herdstat/portage/developer.hh, herdstat/portage/herd.hh,
+	  herdstat/portage/herds_xml.cc, herdstat/portage/keywords.hh,
+	  herdstat/portage/package_which.cc, herdstat/portage/version.hh,
+	  herdstat/util/file.cc, herdstat/util/regex.hh,
+	  herdstat/util/vars.cc: Throw exceptions instead of assert'ing
+	  where we can.
+	* [r193] herdstat/portage/package_list.cc,
+	  herdstat/portage/package_list.hh: Updated PackageList::fill() to
+	  take an optional util::ProgressMeter parameter; fill() now
+	  updates the progress as it fills itself if progress is non-NULL.
+	* [r192] herdstat/doxygen.hh: Update main page docs with the
+	  Progress -> ProgressMeter change
+	* [r191] examples/progress/main.cc, herdstat/util/Makefile.am,
+	  herdstat/util/progress.cc, herdstat/util/progress.hh,
+	  herdstat/util/progress/Makefile.am,
+	  herdstat/util/progress/dots.cc, herdstat/util/progress/dots.hh,
+	  herdstat/util/progress/ellipse.cc,
+	  herdstat/util/progress/ellipse.hh,
+	  herdstat/util/progress/meter.cc,
+	  herdstat/util/progress/meter.hh,
+	  herdstat/util/progress/percent.cc,
+	  herdstat/util/progress/percent.hh,
+	  herdstat/util/progress/spinner.cc,
+	  herdstat/util/progress/spinner.hh: Ditch the util::Progress
+	  class and the bridge pattern we were using with Progress ->
+	  ProgressMeter and instead use polymorphism and have clients use
+	  the ProgressMeter interface directly.
+
+2005-12-11  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r190] configure.ac, herdstat/Makefile.am, herdstat/defs.hh,
+	  herdstat/exceptions.cc, herdstat/exceptions.hh,
+	  herdstat/io/binary_stream_iterator.hh,
+	  herdstat/portage/archs.hh, herdstat/portage/categories.cc,
+	  herdstat/portage/ebuild.cc, herdstat/portage/exceptions.cc,
+	  herdstat/portage/exceptions.hh, herdstat/portage/functional.hh,
+	  herdstat/portage/herds_xml.cc, herdstat/portage/keywords.cc,
+	  herdstat/portage/metadata_xml.cc, herdstat/portage/package.cc,
+	  herdstat/portage/package_finder.hh,
+	  herdstat/portage/package_which.cc,
+	  herdstat/portage/userinfo_xml.cc, herdstat/portage/version.cc,
+	  herdstat/xml/init.cc, tests/src/algo-test.hh,
+	  tests/src/binaryio-test.hh, tests/src/container_base-test.hh,
+	  tests/src/email-test.hh, tests/src/glob-test.hh,
+	  tests/src/package_finder-test.hh,
+	  tests/src/package_list-test.hh, tests/src/package_which-test.hh,
+	  tests/src/regex-test.hh, tests/src/string-test.hh,
+	  tests/src/test_handler.hh: Fix a lot of warnings produced by
+	  -Wextra and -Weffc++. Added herdstat/defs.hh which has some gcc
+	  attribute defines LIBHERDSTAT_UNUSED and LIBHERDSTAT_DEPRECATED.
+	* [r189] herdstat/util/container_base.hh, herdstat/util/file.cc,
+	  herdstat/util/file.hh, herdstat/util/misc.cc,
+	  herdstat/util/progress.cc, herdstat/util/progress.hh,
+	  herdstat/util/progress/Makefile.am,
+	  herdstat/util/progress/dots.cc, herdstat/util/progress/dots.hh,
+	  herdstat/util/progress/ellipse.cc,
+	  herdstat/util/progress/ellipse.hh,
+	  herdstat/util/progress/meter.hh,
+	  herdstat/util/progress/percent.cc,
+	  herdstat/util/progress/spinner.cc, herdstat/util/regex.cc,
+	  herdstat/util/string.cc, herdstat/util/string.hh,
+	  herdstat/util/vars.cc, herdstat/util/vars.hh: Added two new
+	  ProgressMeter implementations: DotsMeter and EllipseMeter.
+	* [r188] Makefile.am.common: Added -Wextra to AM_CXXFLAGS.
+
+2005-12-10  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r187] herdstat/exceptions.hh: Update with libebt API change.
+	  libebt::Backtracable has been renamed to libebt::Backtraceable.
+
+2005-12-09  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r186] configure.ac, examples/Makefile.am, examples/progress,
+	  examples/progress/Makefile.am, examples/progress/main.cc,
+	  herdstat/util/progress.hh: Add example for util::Progress.
+	* [r185] herdstat/util/progress.cc: s/twirly/spinner/ in Progress
+	  constructor.
+
+2005-12-07  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r184] herdstat/util/progress/spinner.cc: Use 'not *_cur'
+	  instead of comparing against the nul byte
+	* [r183] configure.ac, herdstat/util/Makefile.am,
+	  herdstat/util/progress, herdstat/util/progress.cc,
+	  herdstat/util/progress.hh, herdstat/util/progress/Makefile.am,
+	  herdstat/util/progress/meter.hh,
+	  herdstat/util/progress/percent.cc,
+	  herdstat/util/progress/percent.hh,
+	  herdstat/util/progress/spinner.cc,
+	  herdstat/util/progress/spinner.hh: Rewrote the util::Progress
+	  class. It now uses the bridge pattern with the abstract
+	  interface ProgressMeter. This means we can now write different
+	  ProgressMeter implementations. As of now we have PercentMeter
+	  (the previous implementation) and Spinner, a simple meter that
+	  animates the sequence '/-\|' in place making it look like it's a
+	  spinning bar. Everyone will recognize this one as similar (if
+	  not the same) to portage's default spinner.
+	* [r182] herdstat/portage/developer.hh, herdstat/portage/herd.hh,
+	  herdstat/portage/keywords.hh, herdstat/portage/version.cc,
+	  herdstat/portage/version.hh: Add vim folds for the lengthy files.
+
+2005-12-06  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r181] herdstat/util/functional.hh: Added a small code snippet
+	  to doxygen comment for compose_f_gx_hx that shows an example of
+	  nesting compose_f_gx_hx calls to achieve larger expressions like
+	  "if x and y or z".
+	* [r180] herdstat/portage/package_finder.hh,
+	  herdstat/portage/package_list.cc: Updated PackageList::fill() to
+	  also insert categories themselves so that clients trying to find
+	  a category with PackageFinder get what they expect.
+	* [r179] herdstat/portage/package.cc: Assign _full, _cat, and
+	  _path even if a fully-qualified name is not given.
+	* [r178] herdstat/portage/functional.hh,
+	  herdstat/portage/package_which.cc: Nuke portage::FullPkgName as
+	  the same can be accomplished using
+	  std::mem_fun{,_ref}(&portage::Package::full).
+	* [r177] herdstat/portage/metadata.hh: Add comparison operators so
+	  we can sort containers of Metadata objects (by package name).
+	* [r176] herdstat/io/binary_stream.cc: Add assertion to ensure
+	  _stream is not NULL before passing it to fclose.
+	* [r175] examples/herds.xml/main.cc, herdstat/portage/config.cc,
+	  herdstat/portage/data_source.hh, herdstat/portage/keywords.cc,
+	  herdstat/portage/keywords.hh, herdstat/portage/license.cc,
+	  herdstat/portage/project_xml.cc, herdstat/portage/version.cc,
+	  herdstat/portage/version.hh, herdstat/util/string.cc,
+	  herdstat/util/string.hh, tests/src/string-test.hh: Templatized
+	  util::split and util::join to work with any container by using
+	  input/output iterators. util::split uses an output iterator now
+	  instead of returning a new std::vector<std::string>.
+	* [r174] herdstat/Makefile.am: Fix bad syntax.
+	* [r173] herdstat/io/binary_stream.hh,
+	  herdstat/io/binary_stream_iterator.hh: Added
+	  BinaryIStream::read() and BinaryOStream::write() and have the
+	  shift operators call them.
+
+2005-12-04  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r172] herdstat/io/binary_stream.hh,
+	  herdstat/io/binary_stream_iterator.hh, tests/expected/binaryio,
+	  tests/src/binaryio-test.hh: By adding a check for is_ok() in the
+	  BinaryIStream::operator>> std::string specialization (and
+	  returning if is_ok() yields true) we can chuck the
+	  BinaryIStreamIterator::_read() std::string specialization. Also
+	  added a BinaryOStream::operator<<(const char *) overload which
+	  calls the std::string specialization.
+	* [r171] herdstat/util/string.cc: Have util::split() return an
+	  empty vector if the passed string is empty.
+
+2005-12-03  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r170] configure.ac, herdstat/Makefile.am, herdstat/doxygen.hh,
+	  herdstat/io, herdstat/io/Makefile.am,
+	  herdstat/io/binary_stream.cc, herdstat/io/binary_stream.hh,
+	  herdstat/io/binary_stream_iterator.hh,
+	  herdstat/util/Makefile.am, tests/Makefile.am,
+	  tests/binaryio-test.sh, tests/expected/binaryio,
+	  tests/src/binaryio-test.hh: Added herdstat/io subdirectory and
+	  io namespace for I/O related stuff; added classes
+	  BinaryStream,BinaryIStream,BinaryOStream,BinaryIStreamIterator,BinaryOStreamIterator
+	  - C++-like stream interface for C's fread/fwrite.
+
+2005-12-02  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r169] examples/fetchable/rss_feed.cc,
+	  examples/fetchable/rss_feed.hh, herdstat/portage/devaway_xml.cc,
+	  herdstat/portage/devaway_xml.hh, herdstat/portage/herds_xml.cc,
+	  herdstat/portage/herds_xml.hh, herdstat/portage/metadata_xml.cc,
+	  herdstat/portage/metadata_xml.hh,
+	  herdstat/portage/project_xml.cc,
+	  herdstat/portage/project_xml.hh,
+	  herdstat/portage/userinfo_xml.cc,
+	  herdstat/portage/userinfo_xml.hh, herdstat/xml/saxparser.cc,
+	  herdstat/xml/saxparser.hh: Move text() virtual to do_text() and
+	  have text() do some common operations and then call do_text().
+	* [r168] herdstat/util/container_base.hh, herdstat/util/file.hh,
+	  herdstat/util/functional.hh, herdstat/util/glob.hh,
+	  herdstat/util/regex.hh, herdstat/util/timer.cc,
+	  herdstat/util/timer.hh: Explicitly declare implicitly inline
+	  member functions as inline so it's consistent with the other
+	  non-implicit inlines.
+	* [r167] herdstat/util/misc.cc, herdstat/util/misc.hh: Redo the
+	  way we do the internal color map for util::ColorMap; get rid of
+	  the global static in favor of a local static.
+	* [r166] herdstat/portage/package_finder.cc,
+	  herdstat/portage/package_finder.hh: Instead of passing a
+	  util::Timer as an optional argument to operator(), we now have
+	  the class member _timer and a member function elapsed() for
+	  retrieving the elapsed search time.
+	* [r165] herdstat/util/string.cc, herdstat/util/string.hh,
+	  tests/expected/file, tests/expected/string,
+	  tests/src/string-test.hh: Added util::is_all_whitespace for
+	  testing whether a string is all whitespace; also removed
+	  unneeded (un)htmlify functions.
+
+2005-11-30  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r163] .todo, herdstat/portage/version.cc,
+	  herdstat/portage/version.hh: Instead of using a global static
+	  for VersionString::suffix::_suffixes (holds valid suffixes), we
+	  now use a local class (only defined in version.cc)
+	  VersionSuffixes and declare a function that returns a reference
+	  to a local static instance.
+	* [r162] herdstat/portage/developer.cc,
+	  herdstat/portage/developer.hh, herdstat/portage/herd.hh,
+	  herdstat/portage/keywords.hh, herdstat/portage/package.hh: Added
+	  comparison operators for when Developer/Herd/Package is on the
+	  right hand side of an expression (eg string == Herd or regex ==
+	  Developer); more doxygen updates.
+
+2005-11-29  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r161] Makefile.am, configure.ac, examples/Makefile.am,
+	  examples/cachable/Makefile.am, examples/version_components,
+	  examples/version_components/Makefile.am,
+	  examples/version_components/main.cc, examples/versions,
+	  examples/versions/Makefile.am, examples/versions/main.cc,
+	  herdstat/doxygen.hh, herdstat/portage/Makefile.am,
+	  herdstat/portage/developer.hh, herdstat/portage/herd.hh,
+	  herdstat/portage/version.hh, herdstat/util/file.hh: Added more
+	  docs/examples for VersionComponents, VersionString, Versions,
+	  Developer, Developers, Herd, Herds, Directory.
+	* [r160] herdstat/libherdstat_version.hh.in: Added
+	  LIBHERDSTAT_VERSION_STRING, LIBHERDSTAT_BUILD_CXX,
+	  LIBHERDSTAT_BUILD_CXXFLAGS, and LIBHERDSTAT_BUILD_LDFLAGS
+	  defines.
+	* [r159] herdstat/portage/data_source.hh,
+	  herdstat/portage/devaway_xml.cc,
+	  herdstat/portage/devaway_xml.hh, herdstat/portage/herds_xml.cc,
+	  herdstat/portage/herds_xml.hh, herdstat/portage/project_xml.cc,
+	  herdstat/portage/project_xml.hh,
+	  herdstat/portage/userinfo_xml.cc,
+	  herdstat/portage/userinfo_xml.hh, herdstat/portage/xmlbase.hh:
+	  Renamed portage::xmlBase to portage::DataSource and the file
+	  name xmlbase.hh to data_source.hh so that the name sounds more
+	  like what it's abstracting.
+	* [r158] herdstat/fetcher/Makefile.am,
+	  herdstat/fetcher/fetcher.cc, herdstat/fetcher/options.cc,
+	  herdstat/fetcher/options.hh: Added source file to go with
+	  options.hh; updated FetcherOptions constructor to test if
+	  HERDSTAT_FETCH_METHOD envvar is set. If it is, the _imp member
+	  gets set to its value, otherwise DEFAULT_FETCH_METHOD is used.
+
+2005-11-28  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r157] examples/Makefile.am, examples/cachable/main.cc,
+	  herdstat/portage/archs.hh, herdstat/portage/categories.hh,
+	  herdstat/portage/config.hh, herdstat/portage/devaway_xml.hh,
+	  herdstat/portage/herds_xml.hh, herdstat/portage/keywords.hh,
+	  herdstat/portage/license.hh, herdstat/portage/metadata_xml.hh,
+	  herdstat/portage/project_xml.hh,
+	  herdstat/portage/userinfo_xml.hh, herdstat/util/algorithm.hh,
+	  herdstat/util/functional.hh, herdstat/util/glob.hh,
+	  herdstat/util/progress.cc, herdstat/util/progress.hh,
+	  herdstat/util/regex.hh, herdstat/util/timer.hh: Yet more added
+	  examples and example fixes.
+	* [r156] herdstat/util/container_base.hh: Make constructors
+	  protected so we can guarantee they can only be used via
+	  inheritence.
+
+2005-11-27  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r155] Makefile.am, configure.ac, examples/Makefile.am,
+	  examples/cachable, examples/cachable/Makefile.am,
+	  examples/cachable/main.cc, examples/fetchable/main.cc,
+	  examples/fetchable/rss_feed.cc, examples/fetcher/main.cc,
+	  examples/fetcher_options/main.cc, examples/fetcherimp/main.cc,
+	  examples/herds.xml/main.cc, examples/package_finder,
+	  examples/package_finder/Makefile.am,
+	  examples/package_finder/main.cc, examples/vars,
+	  examples/vars/Makefile.am, examples/vars/main.cc,
+	  herdstat/cachable.hh, herdstat/email_address.cc,
+	  herdstat/email_address.hh, herdstat/fetcher/fetcher.cc,
+	  herdstat/fetcher/fetcher.hh, herdstat/fetcher/impmap.cc,
+	  herdstat/noncopyable.hh, herdstat/portage/developer.cc,
+	  herdstat/portage/developer.hh, herdstat/portage/ebuild.hh,
+	  herdstat/portage/gentoo_email_address.cc,
+	  herdstat/portage/gentoo_email_address.hh,
+	  herdstat/portage/herd.cc, herdstat/portage/herd.hh,
+	  herdstat/portage/herds_xml.hh, herdstat/portage/misc.cc,
+	  herdstat/portage/package_finder.hh,
+	  herdstat/portage/package_list.hh, herdstat/util/algorithm.hh,
+	  herdstat/util/file.cc, herdstat/util/functional.hh,
+	  herdstat/util/vars.hh, herdstat/xml/init.hh,
+	  tests/src/Makefile.am: Add more examples.
+
+2005-11-26  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r154] herdstat/doxygen.hh, herdstat/fetchable.hh,
+	  herdstat/parsable.hh, herdstat/portage/devaway_xml.cc,
+	  herdstat/portage/devaway_xml.hh, herdstat/portage/herds_xml.cc,
+	  herdstat/portage/herds_xml.hh, herdstat/portage/metadata_xml.cc,
+	  herdstat/portage/metadata_xml.hh,
+	  herdstat/portage/project_xml.cc,
+	  herdstat/portage/project_xml.hh,
+	  herdstat/portage/userinfo_xml.cc,
+	  herdstat/portage/userinfo_xml.hh, herdstat/xml/document.hh: Add
+	  Parsable::parse() and move what was the parse() virtual to
+	  do_parse() so that it's consistent with Fetchable.
+	* [r153] Makefile.am, NEWS, configure.ac, doc/Doxyfile.in,
+	  examples/Makefile.am, examples/Makefile.am.common,
+	  examples/fetchable, examples/fetchable/Makefile.am,
+	  examples/fetchable/main.cc, examples/fetchable/rss_feed.cc,
+	  examples/fetchable/rss_feed.hh, examples/fetcher/Makefile.am,
+	  examples/fetcher/main.cc, examples/fetcher_options,
+	  examples/fetcher_options/Makefile.am,
+	  examples/fetcher_options/main.cc, examples/fetcherimp,
+	  examples/fetcherimp/Makefile.am, examples/fetcherimp/main.cc,
+	  examples/herds.xml, examples/herds.xml/Makefile.am,
+	  examples/herds.xml/main.cc: Add some examples. Still a WIP.
+	* [r152] herdstat/portage/xmlbase.hh: Remove pure virtual
+	  declarations since they are unnecessary (pure virtuals in base
+	  class).
+	* [r151] herdstat/fetcher/exceptions.cc,
+	  herdstat/fetcher/exceptions.hh, herdstat/fetcher/impmap.cc,
+	  herdstat/fetcher/impmap.hh: Helps to svn add new files.
+	* [r150] herdstat/fetcher/Makefile.am,
+	  herdstat/fetcher/curlfetcher.hh, herdstat/fetcher/fetcher.cc,
+	  herdstat/fetcher/fetcher.hh, herdstat/fetcher/fetcherimp.hh,
+	  herdstat/fetcher/options.hh, herdstat/fetcher/wgetfetcher.hh:
+	  Added FetcherImpMap class which Fetcher now uses rather than a
+	  straight up std::map.
+
+2005-11-25  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r148] configure.ac, examples/fetcher, examples/fetcher/main.cc,
+	  herdstat/exceptions.cc, herdstat/exceptions.hh,
+	  herdstat/fetcher/Makefile.am, herdstat/fetcher/curlfetcher.cc,
+	  herdstat/fetcher/curlfetcher.hh, herdstat/fetcher/fetcher.cc,
+	  herdstat/fetcher/fetcher.hh, herdstat/fetcher/fetcherimp.hh,
+	  herdstat/fetcher/options.hh, herdstat/fetcher/wgetfetcher.cc,
+	  herdstat/fetcher/wgetfetcher.hh, herdstat/portage/Makefile.am,
+	  herdstat/util/functional.hh, herdstat/xml/exceptions.hh: Lots of
+	  Fetcher-related changes. The FetcherOptions instance is now held
+	  by Fetcher itself and not FetcherImp. This allows us to store
+	  which implementation to run inside FetcherOptions and allow
+	  choosing of the implementation at run-time. Wget is now a
+	  requirement, as it is the default.
+	* [r147] tests/src/package_finder-test.hh: Update with
+	  AmbigiousPkg API change.
+	* [r146] herdstat/util/file.cc, herdstat/util/file.hh,
+	  herdstat/util/string.cc, herdstat/util/string.hh: Moved
+	  functions basename, dirname, and chop_fileext from
+	  util/file.{cc,hh} to util/string.{cc,hh} as technically they are
+	  string manipulation functions.
+	* [r145] herdstat/doxygen.hh: Updated main page documentation.
+	* [r144] herdstat/portage/exceptions.cc,
+	  herdstat/portage/exceptions.hh: Added a source file for
+	  portage/exceptions.hh.
+	* [r143] doc/footer.html, doc/header.html: Fix url's.
+
+2005-11-23  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r142] .todo, LICENSE, Makefile.am, doc/Makefile.am,
+	  doc/header.html, herdstat/doxygen.hh,
+	  herdstat/fetcher/fetcher.hh, herdstat/libherdstat_version.hh.in,
+	  herdstat/portage/Makefile.am, herdstat/portage/archs.cc,
+	  herdstat/portage/archs.hh, herdstat/portage/categories.cc,
+	  herdstat/portage/categories.hh, herdstat/portage/config.cc,
+	  herdstat/portage/config.hh, herdstat/portage/ebuild.cc,
+	  herdstat/portage/ebuild.hh, herdstat/portage/functional.hh,
+	  herdstat/portage/keywords.cc, herdstat/portage/keywords.hh,
+	  herdstat/portage/license.cc, herdstat/portage/license.hh,
+	  herdstat/portage/package.cc, herdstat/portage/package.hh,
+	  herdstat/portage/package_directory.cc,
+	  herdstat/portage/package_directory.hh,
+	  herdstat/portage/package_finder.cc,
+	  herdstat/portage/package_finder.hh,
+	  herdstat/portage/package_list.cc,
+	  herdstat/portage/package_list.hh,
+	  herdstat/portage/package_which.cc,
+	  herdstat/portage/package_which.hh, herdstat/util/file.cc,
+	  herdstat/util/file.hh, herdstat/util/functional.hh,
+	  herdstat/util/glob.cc, herdstat/util/glob.hh,
+	  herdstat/util/progress.cc, herdstat/util/progress.hh,
+	  herdstat/util/regex.cc, herdstat/util/regex.hh,
+	  herdstat/util/string.cc, herdstat/util/string.hh,
+	  herdstat/util/timer.cc, herdstat/util/timer.hh,
+	  herdstat/util/vars.cc, herdstat/util/vars.hh, tests/Makefile.am,
+	  tests/expected/ebuild, tests/expected/file,
+	  tests/expected/package_directory, tests/expected/vars,
+	  tests/file-test.sh, tests/package_directory-test.sh,
+	  tests/src/Makefile.am, tests/src/ebuild-test.hh,
+	  tests/src/file-test.hh, tests/src/package_directory-test.hh,
+	  tests/src/test_handler.hh, tests/src/vars-test.hh,
+	  tests/vars-test.sh: Lots of class renames for consistency
+	  reasons; add throw specs for most member functions.
+
+2005-11-21  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r141] LICENSE, NEWS, doc/Doxyfile.in, doc/doxygen.css,
+	  doc/footer.html, doc/header.html, examples,
+	  herdstat/Makefile.am, herdstat/cachable.hh, herdstat/doxygen.hh,
+	  herdstat/email_address.cc, herdstat/email_address.hh,
+	  herdstat/exceptions.hh, herdstat/fetchable.hh,
+	  herdstat/fetcher/curlfetcher.hh, herdstat/fetcher/fetcher.cc,
+	  herdstat/fetcher/fetcher.hh, herdstat/fetcher/fetcherimp.hh,
+	  herdstat/fetcher/options.hh, herdstat/fetcher/wgetfetcher.hh,
+	  herdstat/libherdstat_version.hh.in, herdstat/noncopyable.hh,
+	  herdstat/parsable.hh, herdstat/portage/config.cc,
+	  herdstat/portage/config.hh, herdstat/portage/devaway_xml.cc,
+	  herdstat/portage/devaway_xml.hh, herdstat/portage/ebuild.cc,
+	  herdstat/portage/ebuild.hh, herdstat/portage/functional.hh,
+	  herdstat/portage/gentoo_email_address.cc,
+	  herdstat/portage/gentoo_email_address.hh,
+	  herdstat/portage/herds_xml.cc, herdstat/portage/herds_xml.hh,
+	  herdstat/portage/keywords.cc, herdstat/portage/keywords.hh,
+	  herdstat/portage/metadata.cc, herdstat/portage/metadata.hh,
+	  herdstat/portage/metadata_xml.cc,
+	  herdstat/portage/metadata_xml.hh, herdstat/portage/misc.hh,
+	  herdstat/portage/package.hh, herdstat/portage/package_finder.hh,
+	  herdstat/portage/package_list.hh,
+	  herdstat/portage/package_which.hh,
+	  herdstat/portage/project_xml.cc,
+	  herdstat/portage/project_xml.hh,
+	  herdstat/portage/userinfo_xml.cc,
+	  herdstat/portage/userinfo_xml.hh, herdstat/portage/xmlbase.hh,
+	  herdstat/util/algorithm.hh, herdstat/util/file.hh,
+	  herdstat/util/functional.hh, herdstat/util/glob.cc,
+	  herdstat/util/glob.hh, herdstat/util/misc.hh,
+	  herdstat/util/regex.hh, herdstat/util/string.hh,
+	  herdstat/util/timer.hh, herdstat/util/vars.cc,
+	  herdstat/util/vars.hh, herdstat/xml/document.hh,
+	  herdstat/xml/init.hh, herdstat/xml/saxparser.cc,
+	  herdstat/xml/saxparser.hh, tests/Makefile.am,
+	  tests/algo-test.sh, tests/common.sh,
+	  tests/container_base-test.sh, tests/devaway.xml-test.sh,
+	  tests/ebuild-test.sh, tests/email-test.sh, tests/expected/email,
+	  tests/glob-test.sh, tests/herds.xml-test.sh,
+	  tests/keyword-test.sh, tests/license-test.sh,
+	  tests/metadata.xml-test.sh, tests/package_finder-test.sh,
+	  tests/package_list-test.sh, tests/package_which-test.sh,
+	  tests/regex-test.sh, tests/src/Makefile.am,
+	  tests/src/devaway.xml-test.hh, tests/src/ebuild-test.hh,
+	  tests/src/email-test.hh, tests/src/glob-test.hh,
+	  tests/src/herds.xml-test.hh, tests/src/license-test.hh,
+	  tests/src/metadata.xml-test.hh, tests/src/mk_run_lhs_test.sh,
+	  tests/src/run_lhs_test.cc, tests/src/run_lhs_test.cc.in,
+	  tests/src/userinfo.xml-test.hh, tests/src/version-test.hh,
+	  tests/string-test.sh, tests/userinfo.xml-test.sh,
+	  tests/version-test.sh: Lots of class name changes for
+	  consistency reasons (might as well since I've already shredded
+	  the API); started adding throw specs to most member functions
+	  (still a work in progress). More doxygen updates.
+
+2005-11-20  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r140] NEWS, configure.ac, herdstat/cachable.hh,
+	  herdstat/email_address.hh, herdstat/exceptions.hh,
+	  herdstat/fetchable.hh, herdstat/noncopyable.hh,
+	  herdstat/parsable.hh, herdstat/portage/Makefile.am,
+	  herdstat/portage/archs.hh, herdstat/portage/categories.hh,
+	  herdstat/portage/config.hh, herdstat/portage/devaway_xml.hh,
+	  herdstat/portage/ebuild.hh, herdstat/portage/exceptions.hh,
+	  herdstat/portage/gentoo_email_address.hh,
+	  herdstat/portage/herd.hh, herdstat/portage/herds_xml.hh,
+	  herdstat/portage/keywords.hh, herdstat/portage/license.hh,
+	  herdstat/portage/metadata_xml.hh, herdstat/portage/package.hh,
+	  herdstat/portage/package_list.hh,
+	  herdstat/portage/package_which.cc,
+	  herdstat/portage/package_which.hh,
+	  herdstat/portage/project_xml.hh,
+	  herdstat/portage/userinfo_xml.hh, herdstat/portage/version.hh,
+	  herdstat/portage/xmlbase.hh, herdstat/util/algorithm.hh,
+	  herdstat/util/container_base.hh, herdstat/util/file.hh,
+	  herdstat/util/functional.hh, herdstat/util/progress.hh,
+	  herdstat/util/regex.hh, herdstat/util/string.hh,
+	  herdstat/xml/document.hh, herdstat/xml/exceptions.hh,
+	  herdstat/xml/init.hh, herdstat/xml/saxparser.hh: Doxygen
+	  updates. Add arguments to @class so that the proper #include is
+	  shown. Also use @fn for functions.
+	* [r139] tests/Makefile.am, tests/expected/devaway.xml,
+	  tests/src/Makefile.am, tests/src/devaway.xml-test.hh,
+	  tests/src/ebuild-test.hh, tests/src/find-test.cc,
+	  tests/src/glob-test.hh, tests/src/herds.xml-test.hh,
+	  tests/src/keyword-test.hh, tests/src/metadata.xml-test.hh,
+	  tests/src/run_lhs_test.cc, tests/src/string-test.hh,
+	  tests/src/test_handler.hh: Clean up tests a little bit. Use
+	  algorithms where we can.
+	* [r138] herdstat/portage/functional.hh: Removed FullPkgNameLess
+	  and FullPkgNameEqual since we can use util::compose_f_gx and
+	  std::less/std::equal_to with FullPkgName. Also removed
+	  PackageLivesInOverlay functor since we can use
+	  std::mem_fun_ref(&Package::in_overlay).
+	* [r137] herdstat/portage/developer.cc,
+	  herdstat/portage/developer.hh, herdstat/portage/metadata.cc,
+	  herdstat/portage/metadata.hh: Added copy constructors and copy
+	  assignment operators for Developer and metadata classes since
+	  they now have pointer members. Fixes bugs caused by copying the
+	  pointer without allocating new memory.
+	* [r136] herdstat/portage/package_finder.cc,
+	  herdstat/portage/package_finder.hh: Move constructors into a
+	  source file; fixes linker errors (multiple definitions).
+
+2005-11-19  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r135] tests/Makefile.am, tests/algo-test.sh, tests/common.sh,
+	  tests/container_base-test.sh, tests/devaway.xml-test.sh,
+	  tests/ebuild-test.sh, tests/expected/find,
+	  tests/expected/package_finder, tests/expected/package_which,
+	  tests/find-test.sh, tests/glob-test.sh, tests/herds.xml-test.sh,
+	  tests/keyword-test.sh, tests/license-test.sh,
+	  tests/metadata.xml-test.sh, tests/package_finder-test.sh,
+	  tests/package_list-test.sh, tests/package_which-test.sh,
+	  tests/regex-test.sh, tests/src/Makefile.am,
+	  tests/src/algo-test.cc, tests/src/algo-test.hh,
+	  tests/src/container_base-test.cc,
+	  tests/src/container_base-test.hh, tests/src/devaway.xml-test.cc,
+	  tests/src/devaway.xml-test.hh, tests/src/ebuild-test.cc,
+	  tests/src/ebuild-test.hh, tests/src/glob-test.cc,
+	  tests/src/glob-test.hh, tests/src/herds.xml-test.cc,
+	  tests/src/herds.xml-test.hh, tests/src/keyword-test.cc,
+	  tests/src/keyword-test.hh, tests/src/license-test.cc,
+	  tests/src/license-test.hh, tests/src/metadata.xml-test.cc,
+	  tests/src/metadata.xml-test.hh,
+	  tests/src/package_finder-test.hh,
+	  tests/src/package_list-test.cc, tests/src/package_list-test.hh,
+	  tests/src/package_which-test.hh, tests/src/regex-test.cc,
+	  tests/src/regex-test.hh, tests/src/run_lhs_test.cc,
+	  tests/src/string-test.cc, tests/src/string-test.hh,
+	  tests/src/test_handler.hh, tests/src/userinfo.xml-test.cc,
+	  tests/src/userinfo.xml-test.hh, tests/src/version-test.cc,
+	  tests/src/version-test.hh, tests/string-test.sh,
+	  tests/userinfo.xml-test.sh, tests/version-test.sh: New test
+	  framework. Tests are now defined by classes (derivatives of the
+	  TestHandler abstract base class) in headers. This allows us a
+	  lot less code duplication, doing a main() for each test. The
+	  single executable is now named run_lhs_test. The name of the
+	  test is passed as the first argument, with all subsequent
+	  arguments being passed to each handler's operator().
+	* [r134] configure.ac: Add libherdstat_version.hh to AC_OUTPUT.
+	* [r133] Makefile.am, doc/Doxyfile.in, doc/Makefile.am: Update
+	  Doxyfile.in; change 'docs' Makefile target to 'doxygen'.
+	* [r132] NEWS, herdstat/Makefile.am, herdstat/portage/Makefile.am,
+	  herdstat/portage/config.hh, herdstat/portage/functional.hh,
+	  herdstat/portage/keywords.hh, herdstat/portage/package.cc,
+	  herdstat/portage/package.hh, herdstat/portage/package_finder.hh,
+	  herdstat/portage/package_list.cc,
+	  herdstat/portage/package_list.hh,
+	  herdstat/portage/package_which.cc,
+	  herdstat/portage/package_which.hh, herdstat/portage/version.hh,
+	  herdstat/util/regex.hh, herdstat/util/string.hh,
+	  herdstat/xml/document.hh: Moved PackageList => package_list.hh,
+	  PackageFinder => package_finder.hh, PackageWhich =>
+	  package_which.hh
+	* [r131] herdstat/debug.cc, herdstat/debug.hh: Remove unused files.
+	* [r130] herdstat/exceptions.cc, herdstat/exceptions.hh: Add empty
+	  throw specifications to all exceptions' member functions.
+	* [r129] herdstat/util/functional.hh: Remove more functors that
+	  can be accomplished with the compositional adapters.
+	* [r128] herdstat/libherdstat_version.hh.in: Added so that clients
+	  can get libherdstat version info.
+
+2005-11-17  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r127] NEWS, herdstat/portage/developer.cc,
+	  herdstat/portage/developer.hh, herdstat/portage/functional.hh,
+	  herdstat/portage/herd.cc, herdstat/portage/herd.hh,
+	  herdstat/util/functional.hh: Get rid of a lot of function
+	  objects that can now be accomplished using other function object
+	  and the compositional adapters we added yesterday.
+	* [r126] herdstat/portage/ebuild.cc, herdstat/portage/ebuild.hh:
+	  Added assign() member.
+	* [r125] herdstat/portage/package.cc, herdstat/portage/package.hh:
+	  Get rid of Package::versions() since it is unnecessary now that
+	  we have a KeywordsMap returned by Package::keywords().
+	* [r124] herdstat/portage/keywords.cc,
+	  herdstat/portage/keywords.hh, herdstat/portage/version.cc,
+	  herdstat/portage/version.hh: Add default constructor and
+	  assign() member to VersionString as well as assign() members for
+	  VersionString::suffix and VersionString::nosuffix.
+
+2005-11-16  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r123] NEWS, configure.ac, herdstat/Makefile.am,
+	  herdstat/cachable.hh, herdstat/debug.cc, herdstat/debug.hh,
+	  herdstat/email_address.cc, herdstat/email_address.hh,
+	  herdstat/exceptions.cc, herdstat/exceptions.hh,
+	  herdstat/fetchable.hh, herdstat/fetcher/curlfetcher.cc,
+	  herdstat/fetcher/curlfetcher.hh, herdstat/fetcher/fetcher.cc,
+	  herdstat/fetcher/fetcher.hh, herdstat/fetcher/fetcherimp.hh,
+	  herdstat/fetcher/options.hh, herdstat/fetcher/wgetfetcher.cc,
+	  herdstat/fetcher/wgetfetcher.hh, herdstat/noncopyable.hh,
+	  herdstat/parsable.hh, herdstat/portage/archs.cc,
+	  herdstat/portage/archs.hh, herdstat/portage/categories.cc,
+	  herdstat/portage/categories.hh, herdstat/portage/config.cc,
+	  herdstat/portage/config.hh, herdstat/portage/devaway_xml.cc,
+	  herdstat/portage/devaway_xml.hh, herdstat/portage/developer.cc,
+	  herdstat/portage/developer.hh, herdstat/portage/ebuild.cc,
+	  herdstat/portage/ebuild.hh, herdstat/portage/exceptions.hh,
+	  herdstat/portage/functional.hh,
+	  herdstat/portage/gentoo_email_address.cc,
+	  herdstat/portage/gentoo_email_address.hh,
+	  herdstat/portage/herd.cc, herdstat/portage/herd.hh,
+	  herdstat/portage/herds_xml.cc, herdstat/portage/herds_xml.hh,
+	  herdstat/portage/keywords.cc, herdstat/portage/keywords.hh,
+	  herdstat/portage/license.cc, herdstat/portage/license.hh,
+	  herdstat/portage/metadata.cc, herdstat/portage/metadata.hh,
+	  herdstat/portage/metadata_xml.cc,
+	  herdstat/portage/metadata_xml.hh, herdstat/portage/misc.cc,
+	  herdstat/portage/misc.hh, herdstat/portage/package.cc,
+	  herdstat/portage/package.hh, herdstat/portage/project_xml.cc,
+	  herdstat/portage/project_xml.hh,
+	  herdstat/portage/userinfo_xml.cc,
+	  herdstat/portage/userinfo_xml.hh, herdstat/portage/version.cc,
+	  herdstat/portage/version.hh, herdstat/portage/xmlbase.hh,
+	  herdstat/util/algorithm.hh, herdstat/util/container_base.hh,
+	  herdstat/util/file.cc, herdstat/util/file.hh,
+	  herdstat/util/functional.hh, herdstat/util/glob.cc,
+	  herdstat/util/glob.hh, herdstat/util/misc.cc,
+	  herdstat/util/misc.hh, herdstat/util/progress.cc,
+	  herdstat/util/progress.hh, herdstat/util/regex.cc,
+	  herdstat/util/regex.hh, herdstat/util/string.cc,
+	  herdstat/util/string.hh, herdstat/util/timer.cc,
+	  herdstat/util/timer.hh, herdstat/util/vars.cc,
+	  herdstat/util/vars.hh, herdstat/xml/document.hh,
+	  herdstat/xml/exceptions.hh, herdstat/xml/init.cc,
+	  herdstat/xml/init.hh, herdstat/xml/saxparser.cc,
+	  herdstat/xml/saxparser.hh, tests/expected/keyword,
+	  tests/expected/version, tests/src/algo-test.cc,
+	  tests/src/container_base-test.cc, tests/src/devaway.xml-test.cc,
+	  tests/src/ebuild-test.cc, tests/src/find-test.cc,
+	  tests/src/glob-test.cc, tests/src/herds.xml-test.cc,
+	  tests/src/keyword-test.cc, tests/src/license-test.cc,
+	  tests/src/metadata.xml-test.cc, tests/src/package_list-test.cc,
+	  tests/src/regex-test.cc, tests/src/string-test.cc,
+	  tests/src/userinfo.xml-test.cc, tests/src/version-test.cc:
+	  Couple days worth of changes I didn't have time to commit: -
+	  Added support for ciaranm's backtrace lib, libebt. - Renamed
+	  classes defined in herdstat/portage/version.hh to be more
+	  consistent with the rest of the code. - Modified PackageList to
+	  fill its container on construction by default. - Added
+	  portage::KeywordsMap for mapping VersionString's to Keywords'. -
+	  Added is_masked(), is_testing(), and is_stable() member
+	  functions to the Keyword class and modified Keywords'
+	  all_masked(), all_testing(), and all_stable() to use these new
+	  Keyword member functions instead of the HasMaskChar function
+	  object. - Added fdm=marker to vim modelines in all files.
+
+2005-11-13  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r122] NEWS, tests/expected/algo, tests/src/algo-test.cc: Added
+	  all_equal to algo-test.
+	* [r121] herdstat/portage/package.cc, herdstat/portage/package.hh:
+	  Cleaned up a lot. Moved function objects declared private inside
+	  classes outside so clients can use them too, as most of them are
+	  pretty useful when using the Package class.
+	* [r120] herdstat/util/algorithm.hh: Added all_equal function
+	  templates.
+
+2005-11-08  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r119] herdstat/portage/package.hh: Add optional util::Timer arg
+	  to PackageFinder::operator()
+	* [r118] configure.ac, tests/expected/find, tests/find-test.sh,
+	  tests/src/find-test.cc, tests/src/package_list-test.cc: Fix
+	  tests to work with new find classes.
+	* [r117] herdstat/portage/package.cc, herdstat/portage/package.hh:
+	  Finished implementing PackageWhich.
+	* [r116] herdstat/portage/package.cc, herdstat/portage/package.hh,
+	  tests/src/find-test.cc: Added incomplete PackageWhich class.
+	* [r115] herdstat/portage/Makefile.am, herdstat/portage/find.cc,
+	  herdstat/portage/find.hh, herdstat/portage/package.cc,
+	  herdstat/portage/package.hh, herdstat/portage/package_list.cc,
+	  herdstat/portage/package_list.hh, tests/src/find-test.cc: Added
+	  package.cc and package.hh for new Package class. Modified
+	  PackageList to act like a vector of Package's and moved it to
+	  package.{cc,hh}. Added PackageFinder class to replace the nasty
+	  package search functions find_package(), etc. This is located in
+	  package.hh now rather than find.{cc,hh}.
+	* [r114] herdstat/portage/exceptions.hh: Added a constructor for
+	  NonExistentPkg that takes a util::Regex.
+	* [r113] herdstat/portage/developer.cc,
+	  herdstat/portage/developer.hh, herdstat/portage/metadata.cc,
+	  herdstat/portage/metadata.hh, herdstat/portage/metadata_xml.cc:
+	  Make members that *might* be used pointers so that they can be
+	  instantiated only when needed.
+	* [r112] herdstat/portage/exceptions.hh: Added a template
+	  constructor for the AmbiguousPkg exception so we can pass an
+	  iterator range for the packages member.
+	* [r111] herdstat/portage/devaway_xml.cc,
+	  herdstat/portage/herds_xml.cc, herdstat/portage/userinfo_xml.cc:
+	  Throw an exception in fill_developer() instead of an assertion.
+
+2005-11-07  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r110] herdstat/util/functional.hh: Modified the pair-related
+	  functors to not assume a pair is being passed but rather only
+	  assume it has first and second members.
+
+2005-11-06  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r109] herdstat/xml/init.hh: Make noncopyable; also have
+	  GlobalInit return a const reference.
+	* [r108] herdstat/portage/package_list.hh,
+	  herdstat/util/functional.hh: Renamed SecondEqual to
+	  SecondStrEqual since it didnt do what the name suggested. Add a
+	  new SecondEqual that does to what the name suggests.
+	* [r107] herdstat/portage/functional.hh: Added portage::Email
+	  functor.
+
+2005-11-05  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r106] herdstat/fetcher/curlfetcher.cc,
+	  herdstat/fetcher/curlfetcher.hh,
+	  herdstat/fetcher/wgetfetcher.cc,
+	  herdstat/fetcher/wgetfetcher.hh,
+	  herdstat/util/container_base.hh, herdstat/xml/document.hh: Use
+	  non-inline ctors/dtors even if they're empty; otherwise if we
+	  change it in the future we'll end up breaking binary
+	  compatibility.
+	* [r105] configure.ac: Updated version.
+	* [r104] herdstat/portage/archs.cc, herdstat/portage/archs.hh,
+	  herdstat/portage/categories.cc, herdstat/portage/categories.hh,
+	  herdstat/portage/config.cc, herdstat/portage/config.hh:
+	  Implement the _cats and _archs members of portage::config as
+	  pointers. This allows us to a) get rid of the special
+	  constructor and friend declarations for config and b) defer
+	  instantiation until the categories() or archs() member
+	  functions, respectively, are called.
+	* [r103] herdstat/portage/metadata_xml.cc,
+	  herdstat/portage/metadata_xml.hh: Fix bug when parsing
+	  metadata.xml and the user is using a locale other than en. It
+	  would save both the english and the locale-specific one instead
+	  of just the latter.
+
+2005-11-04  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r102] herdstat/util/functional.hh: Add First and Second
+	  function objects which return the 'first' and 'second' members
+	  (respectively) of a std::pair<K,V>.
+	* [r101] herdstat/util/string.hh: Add a specialization of
+	  stringify for std::string that just returns the string.
+	* [r100] herdstat/util/string.hh: Added stringify and destringify
+	  specializations for std::vector<std::string> which call
+	  util::join and util::split, respectively.
+
+2005-11-02  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r98] herdstat/util/functional.hh: Added SecondEqual function
+	  object.
+
+2005-11-01  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r97] herdstat/util/string.hh: Added stringify specialization
+	  for bool so that boolean values end up as true/false instead of
+	  0/1.
+	* [r96] herdstat/util/functional.hh: Overload
+	  EmptyFirst::operator() with a version that takes a pair<string,
+	  T>.
+
+2005-10-31  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r95] NEWS, tests/src/devaway.xml-test.cc,
+	  tests/src/herds.xml-test.cc, tests/src/metadata.xml-test.cc,
+	  tests/src/userinfo.xml-test.cc: Added missing xml::Init
+	  instantiations to the tests that use xml.
+	* [r94] herdstat/xml/init.cc, herdstat/xml/init.hh: Use a private
+	  constructor and a single point of access (GlobalInit()) instead
+	  of having a static xml::init object (from xmlwrapp).
+
+2005-10-24  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r93] .todo, configure.ac: Updated version for next release.
+	* [r92] herdstat/util/functional.hh: Added util::EmptyFirst
+	  function object for instantiating a std::pair<std::string, T>
+	  with the 'first' element as an empty string.
+
+2005-10-23  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r90] tests/Makefile.am: Wrap the TESTS declaration in the
+	  BUILD_TESTS conditional.
+	* [r89] NEWS, tests/Makefile.am, tests/container_base-test.sh,
+	  tests/ebuild-test.sh, tests/expected/container_base,
+	  tests/expected/ebuild, tests/expected/find,
+	  tests/expected/package_list, tests/expected/userinfo.xml,
+	  tests/find-test.sh, tests/keyword-test.sh,
+	  tests/license-test.sh, tests/metadata.xml-test.sh,
+	  tests/package_list-test.sh, tests/src/Makefile.am,
+	  tests/src/container_base-test.cc, tests/src/ebuild-test.cc,
+	  tests/src/find-test.cc, tests/src/package_list-test.cc,
+	  tests/version-test.sh: Added a few more tests.
+	* [r88] Makefile.am: Add missing sed for @VERSION@ when generating
+	  the pkgconfig file.
+	* [r87] herdstat/portage/keywords.cc,
+	  herdstat/portage/keywords.hh: Use a static const char * and
+	  strchr for _valid_masks instead of a static const std::string
+	  and std::string::find(char).
+	* [r86] herdstat/portage/license.hh: Add missing doxygen @param.
+
+2005-10-22  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r84] tests/Makefile.am: Tidy
+
+2005-10-21  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r83] configure.ac: Update default test data directory.
+	* [r80] configure.ac, tests/Makefile.am, tests/common.sh,
+	  tests/devaway.xml-test.sh, tests/expected/version,
+	  tests/herds.xml-test.sh, tests/keyword-test.sh,
+	  tests/license-test.sh, tests/metadata.xml-test.sh,
+	  tests/src/glob-test.cc, tests/src/version-test.cc,
+	  tests/userinfo.xml-test.sh, tests/version-test.sh: Updated to
+	  work with external test data directory.
+	* [r77] configure.ac: Add missing AC_MSG_RESULT for tests check
+	* [r76] tests-common, tests-common/tests,
+	  tests-common/tests/localstatedir, tests-common/tests/portdir,
+	  Makefile.am, configure.ac, tests/localstatedir, tests/portdir,
+	  tests/src/Makefile.am: Move tests portdir and localstatedir out
+	  so we can package it separately and use it for both
+	  (lib)herdstat. Added configure option for --enable-tests.
+
+2005-10-19  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r71] herdstat/portage/keywords.hh, herdstat/portage/license.hh:
+	  Fix doxygen warnings.
+
+2005-10-16  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r70] herdstat/util/Makefile.am, herdstat/util/regex.hh: Added
+	  Regex::operator< and Regex::operator> for sorting purposes (even
+	  if it doesnt really make sense w/uncompiled regex strings). Also
+	  added a RegexMap class template (offers a few map-like member
+	  functions but it's really a vector of pairs) for mapping Regex
+	  objects to objects of the specified type.
+
+2005-10-15  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r69] herdstat/portage/Makefile.am, herdstat/portage/license.cc,
+	  herdstat/portage/license.hh, tests/Makefile.am,
+	  tests/expected/license, tests/license-test.sh,
+	  tests/portdir/licenses, tests/portdir/licenses/BSD,
+	  tests/portdir/licenses/GPL-2,
+	  tests/portdir/sys-libs/libfoo/libfoo-1.9.ebuild,
+	  tests/src/Makefile.am, tests/src/license-test.cc: Moved
+	  parse_license function from it's definition in herdstat's
+	  action_meta_handler.cc to a new class, portage::License, so it
+	  can easily be used by other things that might need a decrypted
+	  LICENSE string (ie. no '|| ( ... )' syntax).
+	* [r68] herdstat/portage/ebuild.cc, herdstat/portage/ebuild.hh:
+	  Added much better inherit implementation that guarantees to
+	  parse an eclass only once; still commented out however as its
+	  slowness just doesn't seem to outweigh what it gains. Perhaps
+	  turn it off by default and add a toggle?
+	* [r67] herdstat/util/vars.cc, herdstat/util/vars.hh: Strip
+	  comments that are on the end of the same line as a valid
+	  statement; also make set_defaults and perform_action_on member
+	  functions private since there's no reason anything else should
+	  call those.
+
+2005-10-14  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r66] herdstat/portage/ebuild.cc, herdstat/portage/ebuild.hh,
+	  herdstat/util/vars.cc, herdstat/util/vars.hh: Commented out
+	  inherit code for now as it takes way to long to do big searches.
+	  Will leave commented until I find a better way to do it.
+	* [r65] herdstat/portage/keywords.hh: minor style changes.
+	* [r64] herdstat/portage/ebuild.cc, herdstat/portage/ebuild.hh,
+	  herdstat/portage/version.cc, herdstat/portage/version.hh,
+	  herdstat/util/vars.cc, herdstat/util/vars.hh: Added inherit
+	  support to the ebuild class, so that variables defined in any
+	  eclasses are available during substitution.
+	* [r63] .todo, configure.ac: Update version
+	* [r62] herdstat/util/string.cc, herdstat/util/string.hh: Added
+	  sprintf overloads that take a std::string.
+	* [r61] herdstat/portage/misc.hh: Add missing include
+	* [r60] herdstat/portage/functional.hh, herdstat/portage/misc.hh:
+	  Added is_category function and have IsCategory function object
+	  call it.
+
+2005-10-13  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r59] herdstat/portage/archs.cc, herdstat/portage/archs.hh,
+	  herdstat/portage/keywords.cc, herdstat/portage/keywords.hh,
+	  herdstat/util/container_base.hh, tests/src/keyword-test.cc,
+	  tests/src/regex-test.cc, tests/src/version-test.cc: Set Id for
+	  recently added source files.
+
+2005-10-12  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r58] herdstat/util/string.cc, herdstat/util/string.hh,
+	  tests/expected/string, tests/src/string-test.cc: Added
+	  strip_colors function for stripping out ascii color sequences
+	* [r57] NEWS, README: Update with recent changes.
+	* [r56] herdstat/portage/archs.hh, herdstat/portage/keywords.cc,
+	  herdstat/portage/keywords.hh, herdstat/util/container_base.hh,
+	  tests/expected/keyword, tests/src/keyword-test.cc: Cleaned up
+	  Keywords/Archs classes and added some doxygen comments; added
+	  all_masked() and all_unstable() members to Keywords for easily
+	  checking if all keywords have a certain mask.
+	* [r55] .todo, tests/Makefile.am, tests/expected/keyword,
+	  tests/expected/regex, tests/expected/version,
+	  tests/keyword-test.sh, tests/portdir/profiles/arch.list,
+	  tests/portdir/sys-libs/libfoo/libfoo-1.9.ebuild,
+	  tests/regex-test.sh, tests/src/Makefile.am,
+	  tests/src/keyword-test.cc, tests/src/regex-test.cc,
+	  tests/src/version-test.cc, tests/version-test.sh: Added tests
+	  for regex,version,keywords stuff.
+	* [r54] herdstat/portage/Makefile.am, herdstat/portage/archs.cc,
+	  herdstat/portage/archs.hh, herdstat/portage/categories.cc,
+	  herdstat/portage/categories.hh, herdstat/portage/config.cc,
+	  herdstat/portage/config.hh, herdstat/portage/find.cc,
+	  herdstat/portage/functional.hh, herdstat/portage/keywords.cc,
+	  herdstat/portage/keywords.hh, herdstat/portage/package_list.cc,
+	  herdstat/portage/portage_file.cc,
+	  herdstat/portage/portage_file.hh, herdstat/portage/version.cc,
+	  herdstat/portage/version.hh: Removed PortageFileBase class and
+	  instead we just inherit publicly from a ContainerBase derivative
+	  and inherit privately from BaseFile. Also, redesigned the
+	  portage::config class. Moved constructor to private access and
+	  added a friend function, GlobalConfig(), which is the now the
+	  sole access method of the config object. config also now stores
+	  the categories list as well as the new arch list (Archs).
+	* [r53] herdstat/util/vars.cc, herdstat/util/vars.hh: Updated with
+	  BaseFile virtual changes.
+	* [r52] herdstat/util/file.cc, herdstat/util/file.hh: Cleaned up
+	  file classes. Moved virtual read() and close() and do_read() and
+	  do_close() respectively and moved common code into non-virtual
+	  read()/close() of BaseFileObject. BaseFile now encapsulates
+	  access to the stream member via a protected stream() member.
+
+2005-10-11  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r51] doc/Doxyfile.in: Set INLINE_INHERITED_MEMB to yes so
+	  public interfaces of classes that inherit from any of the
+	  ContainerBase template derivatives get shown.
+	* [r50] .todo, herdstat/portage/archs.hh: Removed unneeded
+	  _portdir reference member.
+	* [r49] herdstat/portage/keywords.cc: Fixed Keywords to not try
+	  and use the container directly since we now inherit from SetBase.
+	* [r48] herdstat/util/functional.hh: Added function objects for
+	  use when sorting containers of pair's with the 'first' or
+	  'second' member, First{Less,Greater} and Second{LessGreater}
+	  respectively.
+	* [r47] herdstat/util/vars.hh: Remove nasty const version of
+	  operator[].
+	* [r46] herdstat/util/container_base.hh: Remove irrelevant comment.
+
+2005-10-10  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r45] herdstat/portage/developer.cc,
+	  herdstat/portage/developer.hh, herdstat/portage/herd.cc,
+	  herdstat/portage/herd.hh, herdstat/portage/package_list.cc,
+	  herdstat/portage/package_list.hh, herdstat/util/file.cc,
+	  herdstat/util/file.hh, herdstat/util/vars.cc,
+	  herdstat/util/vars.hh: Updated container-like classes to inherit
+	  from ContainerBase derivatives
+	* [r44] herdstat/util/container_base.hh: Fix VectorBase's insert
+	  vector (missing first arg).
+	* [r43] .todo, herdstat/util/container_base.hh: Add missing const
+	  version of find() to SetBase.
+	* [r42] .todo, NEWS, herdstat/cachable.hh, herdstat/debug.cc,
+	  herdstat/debug.hh, herdstat/email_address.cc,
+	  herdstat/email_address.hh, herdstat/exceptions.cc,
+	  herdstat/exceptions.hh, herdstat/fetchable.hh,
+	  herdstat/fetcher/curlfetcher.cc,
+	  herdstat/fetcher/curlfetcher.hh, herdstat/fetcher/fetcher.cc,
+	  herdstat/fetcher/fetcher.hh, herdstat/fetcher/fetcherimp.hh,
+	  herdstat/fetcher/options.hh, herdstat/fetcher/wgetfetcher.cc,
+	  herdstat/fetcher/wgetfetcher.hh, herdstat/noncopyable.hh,
+	  herdstat/parsable.hh, herdstat/portage/config.cc,
+	  herdstat/portage/devaway_xml.cc,
+	  herdstat/portage/devaway_xml.hh, herdstat/portage/developer.cc,
+	  herdstat/portage/developer.hh, herdstat/portage/ebuild.cc,
+	  herdstat/portage/ebuild.hh, herdstat/portage/find.cc,
+	  herdstat/portage/find.hh,
+	  herdstat/portage/gentoo_email_address.cc,
+	  herdstat/portage/gentoo_email_address.hh,
+	  herdstat/portage/herd.cc, herdstat/portage/herd.hh,
+	  herdstat/portage/herds_xml.cc, herdstat/portage/herds_xml.hh,
+	  herdstat/portage/metadata.cc, herdstat/portage/metadata.hh,
+	  herdstat/portage/metadata_xml.cc,
+	  herdstat/portage/metadata_xml.hh, herdstat/portage/misc.cc,
+	  herdstat/portage/misc.hh, herdstat/portage/package_list.cc,
+	  herdstat/portage/package_list.hh,
+	  herdstat/portage/project_xml.cc,
+	  herdstat/portage/project_xml.hh,
+	  herdstat/portage/userinfo_xml.cc,
+	  herdstat/portage/userinfo_xml.hh, herdstat/portage/xmlbase.hh,
+	  herdstat/util/algorithm.hh, herdstat/util/file.cc,
+	  herdstat/util/file.hh, herdstat/util/misc.cc,
+	  herdstat/util/misc.hh, herdstat/util/progress.cc,
+	  herdstat/util/progress.hh, herdstat/util/regex.cc,
+	  herdstat/util/regex.hh, herdstat/util/string.cc,
+	  herdstat/util/string.hh, herdstat/util/timer.cc,
+	  herdstat/util/timer.hh, herdstat/util/vars.cc,
+	  herdstat/util/vars.hh, herdstat/xml/document.hh,
+	  herdstat/xml/exceptions.hh, herdstat/xml/init.cc,
+	  herdstat/xml/init.hh, herdstat/xml/saxparser.cc,
+	  herdstat/xml/saxparser.hh, tests/src/algo-test.cc,
+	  tests/src/devaway.xml-test.cc, tests/src/glob-test.cc,
+	  tests/src/herds.xml-test.cc, tests/src/metadata.xml-test.cc,
+	  tests/src/string-test.cc, tests/src/userinfo.xml-test.cc: Update
+	  copyright headers to say libherdsat instead of herdstat.
+	* [r41] herdstat/portage/functional.hh: Added IsCategory function
+	  object.
+	* [r40] herdstat/portage/categories.cc,
+	  herdstat/portage/categories.hh: Updated to use PortageBaseFile
+	* [r39] herdstat/portage/Makefile.am: Add portage_file.{cc,hh}.
+	* [r38] herdstat/portage/version.cc, herdstat/portage/version.hh:
+	  Updated to use ContainerBase templates
+	* [r37] herdstat/portage/config.hh: Instead of assert'ing, throw
+	  exception if a config instance doesnt exist
+	* [r36] herdstat/portage/exceptions.hh: Added InvalidKeywordMask
+	  and InvalidArch exceptions.
+	* [r35] herdstat/portage/archs.cc, herdstat/portage/archs.hh,
+	  herdstat/portage/keywords.cc, herdstat/portage/keywords.hh:
+	  Added initial implementation of Archs/Keyword/Keywords classes.
+	* [r34] herdstat/portage/portage_file.cc,
+	  herdstat/portage/portage_file.hh: Added initial PortageFileBase
+	  class implementation; more than likely it will be written to be
+	  more generic and inherit from one of the File classes in the
+	  util NS.
+	* [r33] herdstat/util/glob.cc, herdstat/util/glob.hh: Updated Glob
+	  class to inherit from new VectorBase template
+	* [r32] herdstat/util/functional.hh: Added LengthLess and
+	  LengthGreater function objects for using T::length() as sorting
+	  criterion; Also fixed doxygen comments.
+	* [r31] herdstat/util/Makefile.am,
+	  herdstat/util/container_base.hh: Add container_type.hh which
+	  defines base class templates for classes that act like standard
+	  containers.
+
+2005-10-07  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r30] Makefile.am: test
+	* [r29] NEWS: update with getcols removal news.
+	* [r28] Makefile.am, configure.ac: Generate the pkgconfig file
+	  during 'make all' instead of during 'make dist'
+	* [r27] doc/Makefile.am: Remove the generated man pages beginning
+	  with _
+	* [r26] herdstat/util/regex.cc, herdstat/util/regex.hh: Rename
+	  cflags/eflags enum to Cflags/Eflags.
+	* [r25] herdstat/util/file.cc, herdstat/util/file.hh: Revert
+	  static const changes in Stat class.
+	* [r24] .todo, herdstat/util/Makefile.am, herdstat/util/misc.cc,
+	  herdstat/util/misc.hh: Removed util::getcols() and anything
+	  ncurses-related. The formatter that needs this function is in
+	  herdstat proper so it just ends up bloating libherdstat with
+	  another lib.
+	* [r23] Makefile.am: Fix handling of pkgconfig file.
+	* [r22] .todo, Makefile.am, configure.ac, doc/Doxyfile.in,
+	  herdstat/exceptions.hh, herdstat/portage/categories.hh,
+	  herdstat/portage/config.hh, herdstat/portage/devaway_xml.hh,
+	  herdstat/portage/developer.hh, herdstat/portage/ebuild.hh,
+	  herdstat/portage/exceptions.hh, herdstat/portage/functional.hh,
+	  herdstat/portage/gentoo_email_address.hh,
+	  herdstat/portage/herd.hh, herdstat/portage/herds_xml.hh,
+	  herdstat/portage/metadata.hh, herdstat/portage/metadata_xml.hh,
+	  herdstat/portage/package_list.hh,
+	  herdstat/portage/project_xml.hh,
+	  herdstat/portage/userinfo_xml.hh, herdstat/portage/version.hh,
+	  herdstat/portage/xmlbase.hh, herdstat/util/string.hh,
+	  herdstat/xml/document.hh: Add more doxygen comments.
+	* [r21] herdstat/util/file.cc, herdstat/util/file.hh: Added static
+	  const members to Stat class to denote file type (regular,
+	  directory, fifo, etc).
+	* [r20] libherdstat-0.1.pc.in, libherdstat.pc.in: Dont use version
+	  in file name and instead copy it on make dist.
+	* [r19] Makefile.am: Dont build docs on dist-hook.
+
+2005-10-06  Aaron Walker <ka0ttic@gentoo.org>
+
+	* [r18] herdstat/portage/package_list.hh, herdstat/util/glob.hh:
+	  Add more doxygen comments.
+	* [r17] herdstat/util/regex.hh: Add operator==(const Regex&) and
+	  != for comparing uncompiled regex strings of Regex objects.
+	* [r16] COPYING, ChangeLog, INSTALL, Makefile.am, autogen.sh:
+	  Don't keep things in svn when we can generate them automatically.
+	* [r13] herdstat/portage/version.hh: Fix another doxygen warning.
+	* [r12] ChangeLog, NEWS: Update ChangeLog/NEWS with uncaught
+	  exception bug we just fixed.
+	* [r11] herdstat/portage/categories.hh,
+	  herdstat/portage/devaway_xml.hh, herdstat/portage/herds_xml.hh,
+	  herdstat/portage/metadata.hh, herdstat/portage/metadata_xml.hh,
+	  herdstat/portage/project_xml.hh,
+	  herdstat/portage/userinfo_xml.hh, herdstat/portage/version.hh:
+	  Add more doxygen comments.
+	* [r10] herdstat/portage/herds_xml.cc,
+	  herdstat/portage/herds_xml.hh, herdstat/portage/project_xml.cc:
+	  Catch FileException possibly thrown if projectxml file doesnt
+	  exist.
+	* [r9] herdstat/exceptions.cc: Just use memcpy for copying
+	  va_list's.
+	* [r8] ChangeLog, configure.ac: Update for release
+	* [r7] tests/src/glob-test.cc: add missing include for
+	  patternMatch since it moved to util/functional.hh
+	* [r6] Makefile.am, doc/Makefile.am, herdstat/Makefile.am,
+	  herdstat/cachable.hh, herdstat/debug.cc, herdstat/debug.hh,
+	  herdstat/email_address.cc, herdstat/email_address.hh,
+	  herdstat/exceptions.cc, herdstat/exceptions.hh,
+	  herdstat/fetchable.hh, herdstat/fetcher/Makefile.am,
+	  herdstat/fetcher/curlfetcher.cc,
+	  herdstat/fetcher/curlfetcher.hh, herdstat/fetcher/fetcher.cc,
+	  herdstat/fetcher/fetcher.hh, herdstat/fetcher/fetcherimp.hh,
+	  herdstat/fetcher/options.hh, herdstat/fetcher/wgetfetcher.cc,
+	  herdstat/fetcher/wgetfetcher.hh, herdstat/noncopyable.hh,
+	  herdstat/parsable.hh, herdstat/portage/Makefile.am,
+	  herdstat/portage/categories.cc, herdstat/portage/categories.hh,
+	  herdstat/portage/config.cc, herdstat/portage/config.hh,
+	  herdstat/portage/devaway_xml.cc,
+	  herdstat/portage/devaway_xml.hh, herdstat/portage/developer.cc,
+	  herdstat/portage/developer.hh, herdstat/portage/ebuild.cc,
+	  herdstat/portage/ebuild.hh, herdstat/portage/exceptions.hh,
+	  herdstat/portage/find.cc, herdstat/portage/find.hh,
+	  herdstat/portage/functional.hh,
+	  herdstat/portage/gentoo_email_address.cc,
+	  herdstat/portage/gentoo_email_address.hh,
+	  herdstat/portage/herd.cc, herdstat/portage/herd.hh,
+	  herdstat/portage/herds_xml.cc, herdstat/portage/herds_xml.hh,
+	  herdstat/portage/metadata.cc, herdstat/portage/metadata.hh,
+	  herdstat/portage/metadata_xml.cc,
+	  herdstat/portage/metadata_xml.hh, herdstat/portage/misc.cc,
+	  herdstat/portage/misc.hh, herdstat/portage/package_list.cc,
+	  herdstat/portage/package_list.hh,
+	  herdstat/portage/project_xml.cc,
+	  herdstat/portage/project_xml.hh,
+	  herdstat/portage/userinfo_xml.cc,
+	  herdstat/portage/userinfo_xml.hh, herdstat/portage/version.cc,
+	  herdstat/portage/version.hh, herdstat/portage/xmlbase.hh,
+	  herdstat/util/Makefile.am, herdstat/util/algorithm.hh,
+	  herdstat/util/file.cc, herdstat/util/file.hh,
+	  herdstat/util/functional.hh, herdstat/util/glob.cc,
+	  herdstat/util/glob.hh, herdstat/util/misc.cc,
+	  herdstat/util/misc.hh, herdstat/util/progress.cc,
+	  herdstat/util/progress.hh, herdstat/util/regex.cc,
+	  herdstat/util/regex.hh, herdstat/util/string.cc,
+	  herdstat/util/string.hh, herdstat/util/timer.cc,
+	  herdstat/util/timer.hh, herdstat/util/vars.cc,
+	  herdstat/util/vars.hh, herdstat/xml/Makefile.am,
+	  herdstat/xml/document.hh, herdstat/xml/exceptions.hh,
+	  herdstat/xml/init.cc, herdstat/xml/init.hh,
+	  herdstat/xml/saxparser.cc, herdstat/xml/saxparser.hh,
+	  tests/Makefile.am, tests/src/Makefile.am,
+	  tests/src/algo-test.cc, tests/src/devaway.xml-test.cc,
+	  tests/src/glob-test.cc, tests/src/herds.xml-test.cc,
+	  tests/src/metadata.xml-test.cc, tests/src/string-test.cc,
+	  tests/src/userinfo.xml-test.cc: Set Id property.
+	* [r5] herdstat/portage/developer.hh, herdstat/portage/misc.hh,
+	  herdstat/util/vars.hh, herdstat/xml/saxparser.hh: Fix doxygen
+	  warnings.
+	* [r4] herdstat/cachable.hh, herdstat/email_address.hh,
+	  herdstat/exceptions.hh, herdstat/fetchable.hh,
+	  herdstat/fetcher/curlfetcher.hh, herdstat/fetcher/fetcher.hh,
+	  herdstat/fetcher/fetcherimp.hh, herdstat/fetcher/options.hh,
+	  herdstat/fetcher/wgetfetcher.hh, herdstat/noncopyable.hh,
+	  herdstat/parsable.hh, herdstat/portage/categories.hh,
+	  herdstat/portage/config.hh, herdstat/portage/devaway_xml.hh,
+	  herdstat/portage/developer.hh, herdstat/portage/ebuild.hh,
+	  herdstat/portage/exceptions.hh, herdstat/portage/find.hh,
+	  herdstat/portage/functional.hh,
+	  herdstat/portage/gentoo_email_address.hh,
+	  herdstat/portage/herd.hh, herdstat/portage/herds_xml.hh,
+	  herdstat/portage/metadata.hh, herdstat/portage/metadata_xml.hh,
+	  herdstat/portage/misc.hh, herdstat/portage/package_list.hh,
+	  herdstat/portage/project_xml.hh,
+	  herdstat/portage/userinfo_xml.hh, herdstat/portage/version.hh,
+	  herdstat/portage/xmlbase.hh, herdstat/util/algorithm.hh,
+	  herdstat/util/file.hh, herdstat/util/functional.hh,
+	  herdstat/util/glob.hh, herdstat/util/misc.hh,
+	  herdstat/util/progress.hh, herdstat/util/regex.hh,
+	  herdstat/util/string.hh, herdstat/util/timer.hh,
+	  herdstat/util/vars.hh, herdstat/xml/document.hh,
+	  herdstat/xml/exceptions.hh, herdstat/xml/init.hh,
+	  herdstat/xml/saxparser.hh: Use full path to header (relative to
+	  top_srcdir) in doxygen @file declarations
+	* [r3] herdstat/util/file.cc: Fix compile failure due to missing
+	  include since I moved regexMatch to util/functional.hh
+	* [r2] .todo.1: removed .todo backup file that shouldn't have been
+	  imported.
+	* [r1] ., .todo, .todo.1, AUTHORS, COPYING, ChangeLog, INSTALL,
+	  Makefile.am, Makefile.am.common, NEWS, README, autogen.sh,
+	  config, configure.ac, doc, doc/Doxyfile.in, doc/Makefile.am,
+	  herdstat, herdstat/Makefile.am, herdstat/cachable.hh,
+	  herdstat/debug.cc, herdstat/debug.hh, herdstat/email_address.cc,
+	  herdstat/email_address.hh, herdstat/exceptions.cc,
+	  herdstat/exceptions.hh, herdstat/fetchable.hh, herdstat/fetcher,
+	  herdstat/fetcher/Makefile.am, herdstat/fetcher/curlfetcher.cc,
+	  herdstat/fetcher/curlfetcher.hh, herdstat/fetcher/fetcher.cc,
+	  herdstat/fetcher/fetcher.hh, herdstat/fetcher/fetcherimp.hh,
+	  herdstat/fetcher/options.hh, herdstat/fetcher/wgetfetcher.cc,
+	  herdstat/fetcher/wgetfetcher.hh, herdstat/noncopyable.hh,
+	  herdstat/parsable.hh, herdstat/portage,
+	  herdstat/portage/Makefile.am, herdstat/portage/categories.cc,
+	  herdstat/portage/categories.hh, herdstat/portage/config.cc,
+	  herdstat/portage/config.hh, herdstat/portage/devaway_xml.cc,
+	  herdstat/portage/devaway_xml.hh, herdstat/portage/developer.cc,
+	  herdstat/portage/developer.hh, herdstat/portage/ebuild.cc,
+	  herdstat/portage/ebuild.hh, herdstat/portage/exceptions.hh,
+	  herdstat/portage/find.cc, herdstat/portage/find.hh,
+	  herdstat/portage/functional.hh,
+	  herdstat/portage/gentoo_email_address.cc,
+	  herdstat/portage/gentoo_email_address.hh,
+	  herdstat/portage/herd.cc, herdstat/portage/herd.hh,
+	  herdstat/portage/herds_xml.cc, herdstat/portage/herds_xml.hh,
+	  herdstat/portage/metadata.cc, herdstat/portage/metadata.hh,
+	  herdstat/portage/metadata_xml.cc,
+	  herdstat/portage/metadata_xml.hh, herdstat/portage/misc.cc,
+	  herdstat/portage/misc.hh, herdstat/portage/package_list.cc,
+	  herdstat/portage/package_list.hh,
+	  herdstat/portage/project_xml.cc,
+	  herdstat/portage/project_xml.hh,
+	  herdstat/portage/userinfo_xml.cc,
+	  herdstat/portage/userinfo_xml.hh, herdstat/portage/version.cc,
+	  herdstat/portage/version.hh, herdstat/portage/xmlbase.hh,
+	  herdstat/util, herdstat/util/Makefile.am,
+	  herdstat/util/algorithm.hh, herdstat/util/file.cc,
+	  herdstat/util/file.hh, herdstat/util/functional.hh,
+	  herdstat/util/glob.cc, herdstat/util/glob.hh,
+	  herdstat/util/misc.cc, herdstat/util/misc.hh,
+	  herdstat/util/progress.cc, herdstat/util/progress.hh,
+	  herdstat/util/regex.cc, herdstat/util/regex.hh,
+	  herdstat/util/string.cc, herdstat/util/string.hh,
+	  herdstat/util/timer.cc, herdstat/util/timer.hh,
+	  herdstat/util/vars.cc, herdstat/util/vars.hh, herdstat/xml,
+	  herdstat/xml/Makefile.am, herdstat/xml/document.hh,
+	  herdstat/xml/exceptions.hh, herdstat/xml/init.cc,
+	  herdstat/xml/init.hh, herdstat/xml/saxparser.cc,
+	  herdstat/xml/saxparser.hh, html, html/src.css,
+	  libherdstat-0.1.pc.in, tests, tests/Makefile.am,
+	  tests/algo-test.sh, tests/common.sh, tests/devaway.xml-test.sh,
+	  tests/expected, tests/expected/algo, tests/expected/devaway.xml,
+	  tests/expected/glob, tests/expected/herds.xml,
+	  tests/expected/metadata.xml, tests/expected/string,
+	  tests/expected/userinfo.xml, tests/glob-test.sh,
+	  tests/herds.xml-test.sh, tests/localstatedir,
+	  tests/localstatedir/devaway.xml, tests/localstatedir/herds.xml,
+	  tests/localstatedir/userinfo.xml, tests/metadata.xml-test.sh,
+	  tests/portdir, tests/portdir/app-lala,
+	  tests/portdir/app-lala/foomatic,
+	  tests/portdir/app-lala/foomatic/foomatic-1000.ebuild,
+	  tests/portdir/app-lala/foomatic/metadata.xml,
+	  tests/portdir/app-misc, tests/portdir/app-misc/foo,
+	  tests/portdir/app-misc/foo/foo-1.0a.ebuild,
+	  tests/portdir/app-misc/foo/foo-1.0a_alpha1.ebuild,
+	  tests/portdir/app-misc/foo/foo-1.0a_beta1.ebuild,
+	  tests/portdir/app-misc/foo/foo-1.0a_p1.ebuild,
+	  tests/portdir/app-misc/foo/foo-1.0a_pre1.ebuild,
+	  tests/portdir/app-misc/foo/foo-1.0a_rc1.ebuild,
+	  tests/portdir/app-misc/foo/foo-1.0b.ebuild,
+	  tests/portdir/app-misc/foo/foo-1.0e.ebuild,
+	  tests/portdir/app-misc/foo/foo-1.10.20040629.ebuild,
+	  tests/portdir/app-misc/foo/foo-1.10.20050629-r1.ebuild,
+	  tests/portdir/app-misc/foo/foo-1.10.20050629.ebuild,
+	  tests/portdir/app-misc/foo/foo-1.10.ebuild,
+	  tests/portdir/app-misc/foo/foo-1.2.ebuild,
+	  tests/portdir/app-misc/foo/metadata.xml,
+	  tests/portdir/media-libs, tests/portdir/media-libs/libfoo,
+	  tests/portdir/media-libs/libfoo/libfoo-0.98_rc2.ebuild,
+	  tests/portdir/profiles, tests/portdir/profiles/categories,
+	  tests/portdir/sys-ignore, tests/portdir/sys-ignore/fefifofum,
+	  tests/portdir/sys-ignore/fefifofum/fefifofum-0.1_pre99.ebuild,
+	  tests/portdir/sys-ignore/fefifofum/metadata.xml,
+	  tests/portdir/sys-libs, tests/portdir/sys-libs/libfoo,
+	  tests/portdir/sys-libs/libfoo/libfoo-1.9.ebuild,
+	  tests/portdir/sys-libs/libfoo/metadata.xml,
+	  tests/portdir/sys-libs/metadata.xml,
+	  tests/portdir/sys-libs/pfft,
+	  tests/portdir/sys-libs/pfft/metadata.xml,
+	  tests/portdir/sys-libs/pfft/pfft-0.1.ebuild, tests/src,
+	  tests/src/Makefile.am, tests/src/algo-test.cc,
+	  tests/src/devaway.xml-test.cc, tests/src/glob-test.cc,
+	  tests/src/herds.xml-test.cc, tests/src/metadata.xml-test.cc,
+	  tests/src/string-test.cc, tests/src/userinfo.xml-test.cc,
+	  tests/string-test.sh, tests/userinfo.xml-test.sh: initial import
+

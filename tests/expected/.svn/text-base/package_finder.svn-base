@@ -1,0 +1,12 @@
+
+Testing PackageFinder with ambiguous package name
+  libfoo is ambiguous, matches are:
+    media-libs/libfoo
+    sys-libs/libfoo
+
+Testing PackageFinder
+  sys-libs/pfft
+
+Testing PackageFinder w/regex:
+  Found app-lala/foomatic
+  Found app-misc/foo

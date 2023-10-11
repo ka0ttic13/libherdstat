@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="195"
+   name=""
+   committed-date="2005-12-13T12:53:23.630835Z"
+   url="svn+ssh://svn.berlios.de/svnroot/repos/libherdstat/trunk/m4"
+   last-author="ka0ttic"
+   kind="dir"
+   uuid="830c426f-6502-0410-a408-9daea7eb3ada"
+   revision="223"/>
+<entry
+   committed-rev="195"
+   name="check_cxxflag.m4"
+   text-time="2005-12-16T01:33:46.000000Z"
+   committed-date="2005-12-13T12:53:23.630835Z"
+   checksum="1110661fed6f95e837751e23453f6d18"
+   last-author="ka0ttic"
+   kind="file"
+   prop-time="2005-12-16T01:33:46.000000Z"/>
+</wc-entries>

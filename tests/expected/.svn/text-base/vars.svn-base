@@ -1,0 +1,4 @@
+Testing util::Vars(app-misc/foo/foo-1.10.20050629-r1.ebuild):
+  Variable 'FOO' has a value of 'lala'.
+  Variable 'HOMEPAGE' has a value of 'http://www.${PN}.org'.
+  Variable 'LALA' has a value of '$(echo ${LALA} | sed -n -e 's/foo/bar/')-$(echo ${LALA} | sort -u)'.

@@ -1,0 +1,6 @@
+Testing util::Regex:
+'test$' == 'This is a test' ? 1
+'test$' == 'test a is This' ? 0
+
+Testing util::regexMatch():
+found 'This is a test'.

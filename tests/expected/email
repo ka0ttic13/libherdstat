@@ -1,0 +1,26 @@
+Testing EmailAddress (malformed):
+Caught expected exception 'MalformedEmail' with what() = 'ka0ttic'.
+
+Testing EmailAddress:
+EmailAddress e(ka0ttic@foo.org)
+e = ka0ttic@foo.org
+e.user() == ka0ttic
+e.domain() == foo.org
+e.set_user(bob)
+e = bob@foo.org
+e.user() == bob
+e.domain() == foo.org
+EmailAddress::operator=(foo@bar.com)
+e = foo@bar.com
+e.user() == foo
+e.domain() == bar.com
+
+Testing GentooEmailAddress:
+GentooEmailAddress g(ka0ttic);
+g = ka0ttic@gentoo.org
+g.user() = ka0ttic
+g.domain() = gentoo.org
+g.set_domain(foo.org)
+g = ka0ttic@foo.org
+g.user() = ka0ttic
+g.domain() = foo.org

@@ -1,0 +1,12 @@
+original v1 = 1 10 20 199 -5 
+testing transform_if()
+  resulting v2 = 25 204 
+testing copy_if()
+  resulting v2 = 20 199 
+testing all_equal()
+  v1 = 1 10 20 199 -5 
+  all_equal(v1.begin(), v1.end()) ? false
+  all_equal(v1.begin(), v1.end(), std::plus<int>(5)) ? false
+  v2 = 1 1 
+  all_equal(v2.begin(), v2.end()) ? true
+  all_equal(v2.begin(), v2.end(), std::plus<int>(5)) ? true
